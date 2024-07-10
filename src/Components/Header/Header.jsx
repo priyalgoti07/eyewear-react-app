@@ -9,10 +9,13 @@ const Header = () => {
             <header className='w-full  bg-[#ffc038] flex justify-between p-6'>
                 <p className=''></p>
                 {/* Free shipping on orders above 10000 */}
-                <div className='hover: cursor-pointer'>
-                    <h1 className='text-5xl font-extrabold tracking-widest'>SAVANT</h1>
-                    <h3 className=' font-semibold text-xl tracking-[0.9em]'>EYEWEAR</h3>
-                </div>
+                <Link to='/'>
+                    <div className='hover: cursor-pointer text-center'>
+                        <h1 className='text-5xl font-extrabold tracking-widest'>NETRAM</h1>
+                        <h3 className=' font-semibold text-xl tracking-[0.9em] '>EYEWEAR</h3>
+                    </div>
+                </Link>
+
                 <div className='flex gap-5 items-center'>
                     <div><img src={Search} alt='Search' /></div>
                     <Link to='/cart'>
@@ -20,14 +23,16 @@ const Header = () => {
                     </Link>
                 </div>
             </header>
-            <na>
+            <nav>
                 <ul className='flex gap-10 justify-center bg-black text-[#f2f5ff] text-xs p-5'>
-                    <li>COLLECTION</li>
+                    <Link to='/products'>
+                        <li>COLLECTION</li>
+                    </Link>
                     <li>EYEGLASSES</li>
                     <li>SUNGLASSES</li>
                     <li>ABOUT US</li>
                 </ul>
-            </na>
+            </nav>
         </div>
 
     )

@@ -6,11 +6,13 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import Layout from './Layout.jsx'
 import Home from './Components/Home/Home.jsx'
 import Cart from './Components/Cart/Cart.jsx'
+import Product from './Components/Product/Product.jsx'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout />}>
     <Route path='' element={<Home />} />
     <Route path='/cart' element={<Cart />} />
+    <Route path='/products' element={<Product />} />
   </Route>
 ))
 ReactDOM.createRoot(document.getElementById('root')).render(
