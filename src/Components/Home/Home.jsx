@@ -1,8 +1,9 @@
 import React from 'react'
+import SliderHero from '../SliderHero/SliderHero'
 
 const Home = () => {
     return (
-        <div>Home</div>
+        <><SliderHero /></>
     )
 }
 
