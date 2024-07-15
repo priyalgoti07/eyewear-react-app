@@ -2,13 +2,13 @@ import React from 'react'
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import hero7 from "../../assets/SVG/hero-1.jpg";
-import hero6 from "../../assets/SVG/hero-2.jpg";
-import hero3 from "../../assets/SVG/hero-3.jpg";
-import hero1 from "../../assets/SVG/hero-4.jpg";
-import hero4 from "../../assets/SVG/hero-5.jpg";
-import hero5 from "../../assets/SVG/hero-6.jpg";
-import hero2 from "../../assets/SVG/hero-7.jpg";
+import hero7 from "../../assets/SVG/slider_hero_img/hero-1.jpg";
+import hero6 from "../../assets/SVG/slider_hero_img/hero-2.jpg";
+import hero3 from "../../assets/SVG/slider_hero_img/hero-3.jpg";
+import hero1 from "../../assets/SVG/slider_hero_img/hero-4.jpg";
+import hero4 from "../../assets/SVG/slider_hero_img/hero-5.jpg";
+import hero5 from "../../assets/SVG/slider_hero_img/hero-6.jpg";
+import hero2 from "../../assets/SVG/slider_hero_img/hero-7.jpg";
 import "./sliderhero.css"
 
 
