@@ -1,13 +1,61 @@
+/* sliderhero.css */
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  /* Ensure arrows are above other elements */
+}
+
+.slick-prev:before,
+.slick-next:before {
+  content: '';
+  /* Remove the default arrows */
+}
+
+.custom-arrow {
+  background-color: rgba(0, 0, 0, 0.15);
+  /* Background color for the arrow */
+  border-radius: 50%;
+  /* Make the arrows circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Change background color on hover */
+}
+
+.arrow {
+  color: white;
+  /* Arrow color */
+  font-size: 28px;
+  /* Adjust the size of the arrow */
+}
+
+.prev-arrow {
+  left: 10px;
+  /* Adjust the position as needed */
+}
+
+.next-arrow {
+  right: 10px;
+  /* Adjust the position as needed */
+}
+
 .slider-container {
   max-width: 100%;
   min-height: 80vh;
   /* Ensures the container does not exceed viewport width */
   overflow: hidden;
-  
+
   /* Prevents horizontal scrolling */
 }
 
 .carousel-slide {
+  position: relative;
   height: 653px;
   text-align: center;
   /* Centers the content inside each slide */
@@ -21,4 +69,69 @@
   display: block;
   margin: 0 auto;
   filter: brightness(80%) grayscale(30%);
+}
+
+/* Customize dots */
+.slick-dots {
+  position: absolute;
+  bottom: 10px;
+  /* Adjust the position as needed */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.slick-dots li {
+  margin: 0 5px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: white;
+  /* Change the dot color */
+}
+
+.slick-dots li.slick-active button:before {
+  color: #000;
+  /* Change the active dot color */
+}
+
+.main-container {
+  position: absolute;
+  top: 65%;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  max-width: 1500px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.inner-content {
+  color: #f2f5ff;
+  max-width: 530px;
+  text-align: left;
+}
+
+.heading-slider {
+  font-size: 28px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.para-content {
+  font-size: 18px;
+}
+.shope-btn{
+  background-color: #C8651B;
+  padding: 10px 5px;
+  color: #f2f5ff;
+  font-size: 18px;
+  font-weight: 700;
+  width: 150px;
+}
+.inner-content-two{
+  align-self: self-end;
 }
