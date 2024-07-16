@@ -151,3 +151,13 @@
 .featured-img1 img:hover {
   transform: scale(1.025);
 }
+
+.shope-collection {
+  background-color: #C8651B;
+  width: 200px;
+  text-align: center;
+  color: #fff;
+  padding: 10px 5px;
+  font-size: 14px;
+  font-weight: 700;
+}

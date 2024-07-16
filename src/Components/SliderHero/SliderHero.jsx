@@ -9,7 +9,8 @@ import hero1 from "../../assets/SVG/slider_hero_img/hero-4.jpg";
 import hero4 from "../../assets/SVG/slider_hero_img/hero-5.jpg";
 import hero5 from "../../assets/SVG/slider_hero_img/hero-6.jpg";
 import hero2 from "../../assets/SVG/slider_hero_img/hero-7.jpg";
-import featured1 from "../../assets/SVG/featured_img/ey.jpg"
+import featured1 from "../../assets/SVG/featured_img/ey.jpg";
+import featured2 from "../../assets/SVG/featured_img/ad-3-844acc41.jpg"
 import "./sliderhero.css"
 import { Link } from 'react-router-dom';
 
@@ -43,13 +44,15 @@ const SliderHero = () => {
 
     var settings = {
         dots: true,
-        speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
         fade: true,
         infinite: true,
+        autoplay: true,
+        speed: 3000,
+        autoplaySpeed: 3000,
     };
     return (
         <>
@@ -149,7 +152,7 @@ const SliderHero = () => {
                     </div>
                 </Slider>
             </section>
-            <section className='featured-coll container m-auto py-16 px-5'>
+            <section className='featured-coll container m-auto py-16 px-5 flex'>
                 <div className='featured-coll__col-1 max-w-[584px] px-10 flex flex-col gap-6'>
                     <div className='flex flex-col gap-4'>
                         <h4 className='tracking-widest font-black text-xl'>AMORA</h4>
@@ -157,11 +160,16 @@ const SliderHero = () => {
                             The collection features a range of frames in various colors and styles, all made from high-quality materials that are built to last.</p>
                         <Link className='text-[#423c3a] tracking-widest text-sm font-semibold underline underline-offset-[5px]' to='#'>BROWSE AMORA</Link>
                     </div>
-                    <div className=' featured-img1'>
-                        <img src={featured1} className='brightness-110 saturate-[80%] contrast-100'/>
+                    <div className='featured-img1'>
+                        <img src={featured1} className='brightness-110 saturate-[80%] contrast-100' />
                     </div>
                 </div>
-                <div className='featured-coll__col-2'></div>
+                <div className='featured-coll__col-2 flex flex-col justify-center gap-7'>
+                    <div className='featured-img1'>
+                        <img src={featured2} className='brightness-105 contrast-[105%]  outline outline-2' />
+                    </div>
+                    <a className='shope-collection'>SEE THE COLLECTION</a>
+                </div>
             </section>
 
         </>
