@@ -124,7 +124,8 @@
 .para-content {
   font-size: 18px;
 }
-.shope-btn{
+
+.shope-btn {
   background-color: #C8651B;
   padding: 10px 5px;
   color: #f2f5ff;
@@ -132,6 +133,21 @@
   font-weight: 700;
   width: 150px;
 }
-.inner-content-two{
+
+.inner-content-two {
   align-self: self-end;
+}
+
+.featured-img1 {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.featured-img1 img {
+  object-fit: cover;
+  transition: transform 0.5s, filter 1.5s ease-in-out;
+}
+
+.featured-img1 img:hover {
+  transform: scale(1.025);
 }
