@@ -7,8 +7,8 @@ const LatestPost = () => {
   return (
     <div className='container m-auto'>
       <div className='my-10 text-center uppercase font-semibold tracking-widest text-[#423c3a] text-xl '>Latest Posts</div>
-      <div className='flex '>
-        <div className='max-w-[33%] flex flex-col gap-5 mx-10'>
+      <div className='flex mb-32'>
+        <div className='max-w-[33rem] flex flex-col gap-5 mx-10'>
           <img src={bolg1} className='max-w-[450px] h-[32rem] object-cover' />
           <div className='max-w-[450px] flex flex-col gap-2'>
             <span className='text-xs tracking-widest text-[#423c3ab7] font-semibold'>FEEL GOOD</span>
