@@ -17,20 +17,17 @@ function getSubfolder(type, isCompressed) {
 function getImgUrl(fileName, type, isMain, isCompressed = false) {
     const ext = 'jpg';
     const subfolder = getSubfolder(type, isCompressed);
-    console.log("subfolder",subfolder);
     const number = isMain ? '1' : '2';
 
     const imgURL = new URL(
         `../assets/img/${subfolder}/${fileName}-${number}.${ext}`,
         import.meta.url,
     ).href;
-    console.log("imgURL",imgURL);
     return imgURL;
 }
 
 function mapImage(item) {
     const fileName = item.title.toLowerCase().split(' ').join('-');
-    console.log("fileName", fileName);
     return {
         ...item,
         images: {
@@ -51,4 +48,4 @@ export const sunglassesData = sunniesData.map((item) =>
     Object.freeze(mapImage(item)),
 );
 
-export const allProductData = [...eyeglassesData, sunglassesData]
+export const allProductData = [...eyeglassesData, ...sunglassesData]
