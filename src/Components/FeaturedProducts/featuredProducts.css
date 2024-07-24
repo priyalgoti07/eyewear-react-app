@@ -1,0 +1,21 @@
+.featured-pro-img {
+    border: 7px solid #f2efee;
+    overflow: hidden;
+    transition: border-color 0.3s linear;
+    /* Smooth transition for border color change */
+}
+
+.featured-pro-img img {
+    object-fit: cover;
+    transition: transform 0.3s linear;
+    /* Smooth transition for transform */
+}
+
+.featured-pro-img:hover {
+    border-color: orange;
+}
+
+.featured-pro-img img:hover {
+    transform: scale(1.025);
+    cursor: pointer;
+}
