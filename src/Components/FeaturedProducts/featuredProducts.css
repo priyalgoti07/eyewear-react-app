@@ -19,3 +19,29 @@
     transform: scale(1.025);
     cursor: pointer;
 }
+.custom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+    z-index: 2;
+    background: transparent; /* Ensure background is transparent */
+    border: none; /* Remove any border */
+    padding: 0; /* Remove any padding */
+    outline: none; /* Remove default outline */
+  }
+  
+  .next-arrow {
+    right: -20px;
+  }
+  
+  .prev-arrow {
+    left: -20px;
+  }
+  
+  .custom-arrow img {
+    width: 40px;
+    height: 40px;
+    fill: #000; /* Change color as needed */
+  }
