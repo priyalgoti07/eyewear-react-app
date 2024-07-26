@@ -7,6 +7,8 @@ import ProgressiveImage from 'react-progressive-graceful-image';
 import "./featuredProducts.css"
 import left from "../../assets/SVG/arrows/left-arrow-svgrepo-com.svg"
 import right from "../../assets/SVG/arrows/right-arrow-svgrepo-com.svg"
+import { Link } from 'react-router-dom';
+import getCategory from '../../utils/getCategory';
 
 
 
@@ -47,24 +49,26 @@ const FeaturedProducts = () => {
     prevArrow: <PrevArrow />,
   }
   return (
-    <section className='container m-auto'>
+    <section className='container m-auto container-products'>
       <h3 className='tracking-widest font-bold text-2xl text-center'>NEW ARRIVALS</h3>
       <Slider {...productSettings}>
         {featured.map((item, index) => (
-          <div key={index} >
-            <div className='m-5 text-center '>
-              <ProgressiveImage src={item.images.main} placeholder={item.compressedImages.main}>
-                {(src, loading) =>
-                  <div className='featured-pro-img'>
-                    <img src={src} alt={item.title} />
-                  </div>}
-              </ProgressiveImage>
-              <div className='flex flex-col gap-2 hover:bg-[#f2efee] p-2'>
-                <h3 className='text-lg font-semibold tracking-widest uppercase text-[#423c3a]'>{item.title}</h3>
-                <p>{item.price}</p>
+          <Link to={`/products/${getCategory(item.type)}/${item.id}`}>
+            <div key={index} >
+              <div className='m-5 text-center '>
+                <ProgressiveImage src={item.images.main} placeholder={item.compressedImages.main}>
+                  {(src, loading) =>
+                    <div className='featured-pro-img'>
+                      <img src={src} alt={item.title} />
+                    </div>}
+                </ProgressiveImage>
+                <div className='flex flex-col gap-2 hover:bg-[#f2efee] p-2'>
+                  <h3 className='text-lg font-semibold tracking-widest uppercase text-[#423c3a]'>{item.title}</h3>
+                  <p>{item.price}</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </Slider>
     </section>

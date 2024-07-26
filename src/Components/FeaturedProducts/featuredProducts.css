@@ -1,47 +1,57 @@
 .featured-pro-img {
-    border: 7px solid #f2efee;
-    overflow: hidden;
-    transition: border-color 0.3s linear;
-    /* Smooth transition for border color change */
+  border: 7px solid #f2efee;
+  overflow: hidden;
+  transition: border-color 0.3s linear;
+  /* Smooth transition for border color change */
 }
 
 .featured-pro-img img {
-    object-fit: cover;
-    transition: transform 0.3s linear;
-    /* Smooth transition for transform */
+  object-fit: cover;
+  transition: transform 0.3s linear;
+  /* Smooth transition for transform */
 }
 
 .featured-pro-img:hover {
-    border-color: orange;
+  border-color: orange;
 }
 
 .featured-pro-img img:hover {
-    transform: scale(1.025);
-    cursor: pointer;
+  transform: scale(1.025);
+  cursor: pointer;
 }
-.custom-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    z-index: 2;
-    z-index: 2;
-    background: transparent; /* Ensure background is transparent */
-    border: none; /* Remove any border */
-    padding: 0; /* Remove any padding */
-    outline: none; /* Remove default outline */
-  }
-  
-  .next-arrow {
-    right: -20px;
-  }
-  
-  .prev-arrow {
-    left: -20px;
-  }
-  
-  .custom-arrow img {
-    width: 40px;
-    height: 40px;
-    fill: #000; /* Change color as needed */
-  }
+
+.container-products .custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+  z-index: 2;
+  background: transparent;
+  /* Ensure background is transparent */
+  border: none;
+  /* Remove any border */
+  padding: 0;
+  /* Remove any padding */
+  outline: none;
+  /* Remove default outline */
+}
+
+.container-products .custom-arrow:hover {
+  background-color: transparent;
+}
+
+.container-products .next-arrow {
+  right: -20px;
+}
+
+.container-products .prev-arrow {
+  left: -20px;
+}
+
+.container-products .custom-arrow img {
+  width: 40px;
+  height: 40px;
+  fill: #000;
+  /* Change color as needed */
+}
