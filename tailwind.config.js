@@ -6,9 +6,10 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily:{
+      fontFamily: {
         'Playfair-Display': ["Playfair Display", "sans-serif"],
-        'Raleway': ["Raleway", "sans-serif"]
+        'Raleway': ["Raleway", "sans-serif"],
+        'Montserrat': ["Montserrat", "sans-serif"]
       }
     },
   },

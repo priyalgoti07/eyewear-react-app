@@ -2,8 +2,11 @@ import React from 'react'
 import Search from '../../assets/SVG/search.svg'
 import Bag from '../../assets/SVG/bag.svg'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+    const carts = useSelector(state => state)
+    console.log("carts", carts.carts);
     return (
         <div>
             <header className='w-full  bg-[#ffc038] flex justify-between p-6'>
@@ -19,7 +22,7 @@ const Header = () => {
                 <div className='flex gap-5 items-center'>
                     <div><img src={Search} alt='Search' /></div>
                     <Link to='/cart'>
-                        <div><img src={Bag} alt='Bag' /></div>
+                        <div><img src={Bag} alt='Bag' /><span>{carts.carts.length}</span></div>
                     </Link>
                 </div>
             </header>
