@@ -22,7 +22,8 @@ const Header = () => {
                 <div className='flex gap-5 items-center'>
                     <div><img src={Search} alt='Search' /></div>
                     <Link to='/cart'>
-                        <div><img src={Bag} alt='Bag' /><span>{carts.carts.length}</span></div>
+                        <div className='relative'><img src={Bag} alt='Bag' className='' />
+                            <span className='absolute top-5 left-5 w-5 h-5 bg-black text-white text-center rounded-full text-sm border-2 border-black flex justify-center items-center'>{carts.carts.length}</span></div>
                     </Link>
                 </div>
             </header>

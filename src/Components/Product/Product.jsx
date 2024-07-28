@@ -19,9 +19,11 @@ const Product = () => {
     const [quantity, setQuantity] = useState(1)
     const displayItem = productData.find((item) => item.id === id)
     const [toggleImg, setToggleImg] = useState(displayItem.images?.main || '')
+    const [isClicked, setIsClicked] = useState(false);
     const handleaddTocart = (e) => {
         console.log("i am productsData", displayItem);
         e.preventDefault()
+        setIsClicked(true)
         if (quantity) {
             dispatch(addCart({ id: displayItem.id, displayItem, quantity }))
         }
@@ -62,10 +64,24 @@ const Product = () => {
                         </ul>
                     </div>
                     <div>
-                        <form >
-                            <label className='block'>Quantity:</label>
-                            <input className='w-10  h-10 border-2 text-center' type='text' value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-                            <button onClick={handleaddTocart}>ADD TO CART</button>
+                        <form className='flex flex-col gap-7' >
+                            <div >
+                                <label className='block'>Quantity:</label>
+                                <input className='w-10  h-10 border-2 text-center' type='text' value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+                            </div>
+                            <button onClick={handleaddTocart}
+                                className={`border-2 p-3 rounded-3xl text-[13px] ${isClicked
+                                    ? 'bg-[#C8651B] text-white border-[#C8651B] text-center'
+                                    : 'bg-transparent text-[#C8651B] border-[#C8651B] hover:bg-[#C8651B] hover:text-white text-center'
+                                    }`}>ADD TO CART
+                            </button>
+                            <button
+                                onClick={(e) => e.preventDefault()}
+                                className='border-2 border-[#c7a374] p-3 rounded-3xl hover:bg-[#c7a374] hover:text-white  text-[#636363] text-[13px] text-center'>
+                                <Link to={'/cart'}>
+                                    BUY IT NOW
+                                </Link>
+                            </button>
                         </form>
                     </div>
                 </div>

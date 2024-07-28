@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     carts: []
@@ -9,9 +9,10 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addCart: (state, action) => {
+            console.log("state",state.carts);
             const existingCartItem = state.carts.find(cart => cart.id === action.payload.id);
 
-            console.log("existingCartItem",existingCartItem);
+            console.log("existingCartItem", existingCartItem);
             if (existingCartItem) {
                 // Update the quantity of the existing item
                 existingCartItem.quantity += action.payload.quantity;
