@@ -35,6 +35,15 @@ const Cart = () => {
             {
                 Header: 'ITEM',
                 accessor: 'title',
+                cell: ({ cell }) => {
+                    console.log("cell.row.original.images", cell.row.original.images)
+                    return (
+                        <div className="flex items-center">
+                            <img src={cell.row.original.images} alt={cell.value} className="w-6 h-6 mr-2" />
+                            {cell.value}
+                        </div>
+                    );
+                }
             },
             {
                 Header: 'PRICE',
@@ -59,52 +68,47 @@ const Cart = () => {
         prepareRow,
     } = useTable({ columns, data });
     return (
-        <div className='container m-auto flex justify-center'>
+        <div className='container m-auto flex flex-col items-center justify-center my-32 font-[#423c3a]'>
 
             <div>
-                <h1 className='uppercase tracking-widest'>Your cart</h1>
+                <h1 className='uppercase tracking-[2px] text-xl font-bold mb-8'>Your cart</h1>
             </div>
-            <table>
-                <thead>
-                    {headerGroups.map((headerGroup, index) => (
-                        <tr {...headerGroup.getHeaderGroupProps()} key={index}>
-                            {headerGroup.headers.map(column => (
-                                <th
-                                    {...column.getHeaderProps()}
-                                    // style={{
-                                    //     color: 'black',
-                                    //     fontWeight: 'bold',
-                                    // }}
-                                    className='text-xs'
-                                >
-                                    {column.render('Header')}
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody {...getTableBodyProps()}>
-                    {rows.map((row, index) => {
-                        prepareRow(row);
-                        return (
-                            <tr {...row.getRowProps()} key={index}>
-                                {row.cells.map(cell => (
-                                    <td
-                                        {...cell.getCellProps()}
-                                        // style={{
-                                        //     padding: '50px',
-                                        //     // border: 'solid 1px gray',
-                                        // }}
-                                        className='p-16'
+            <div>
+                <table>
+                    <thead>
+                        {headerGroups.map((headerGroup, index) => (
+                            <tr {...headerGroup.getHeaderGroupProps()} key={index} >
+                                {headerGroup.headers.map(column => (
+                                    <th
+                                        {...column.getHeaderProps()}
+                                        className='text-xs'
                                     >
-                                        {cell.render('Cell')}
-                                    </td>
+                                        {column.render('Header')}
+                                    </th>
                                 ))}
                             </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+                        ))}
+                    </thead>
+                    <tbody {...getTableBodyProps()} className='border-t-[1px] border-[#272525]'>
+                        {rows.map((row, index) => {
+                            prepareRow(row);
+                            return (
+                                <tr {...row.getRowProps()} key={index}>
+                                    {row.cells.map(cell => (
+                                        <td
+                                            {...cell.getCellProps()}
+                                            className='p-7'
+                                        >
+                                            {cell.render('Cell')}
+                                        </td>
+                                    ))}
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
     )
