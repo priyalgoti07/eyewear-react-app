@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTable } from 'react-table'
 import { removecart } from '../../cartData/cartSlice'
 
 const Cart = () => {
+    const [quntityCal, setQuntityCal] = useState(0)
     const displayCartData = useSelector(state => state)
     console.log("displayCartData", displayCartData);
     const dispatch = useDispatch()
@@ -18,6 +19,12 @@ const Cart = () => {
         })),
         [displayCartData]
     );
+
+    const handleCalculation = (row) => {
+        console.log("row========>", row.original.quantity);
+        setQuntityCal(quntityCal = quntityCal + 1)
+    }
+    console.log("setQuntityCal", quntityCal);
     const columns = React.useMemo(
         () => [
             {
@@ -26,7 +33,8 @@ const Cart = () => {
                 Cell: ({ cell }) => {
                     return (
                         <div className="flex items-center gap-2">
-                            <img src={cell.row.original.images} alt={cell.value} className="w-36 h-24 object-cover border-[7px] hover:border-2 hover:border-[#C8651B]" />
+                            <img src={cell.row.original.images} alt={cell.value}
+                                className="w-36 h-24 object-cover border-[7px] hover:border-2 hover:border-[#C8651B]" />
                             {cell.value}
                         </div>
                     );
@@ -39,10 +47,19 @@ const Cart = () => {
             {
                 Header: 'QUANTITY',
                 accessor: 'quantity',
+                Cell: ({ cell, row }) => {
+                    console.log("cell", cell, row);
+                    return (
+                        <div>
+                            <button onClick={handleCalculation}>+</button>{cell.value}<button>-</button>
+                        </div>
+                    )
+                }
             },
             {
                 Header: 'TOTAL',
                 accessor: 'total',
+
             },
             {
                 Header: '',
