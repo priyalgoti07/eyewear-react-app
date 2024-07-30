@@ -9,7 +9,8 @@ export default {
       fontFamily: {
         'Playfair-Display': ["Playfair Display", "sans-serif"],
         'Raleway': ["Raleway", "sans-serif"],
-        'Montserrat': ["Montserrat", "sans-serif"]
+        'Montserrat': ["Montserrat", "sans-serif"],
+        'Figtree': ["Figtree", "sans-serif"]
       }
     },
   },

@@ -1,23 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useTable } from 'react-table'
+import { removecart } from '../../cartData/cartSlice'
 
 const Cart = () => {
-
-
     const displayCartData = useSelector(state => state)
-    console.log("displayCartData", displayCartData?.carts.map((item) => item));
-
-    // const data = React.useMemo(
-    //     () => [
-    //         { id: 1, name: 'John Doe', age: 28, city: 'New York' },
-    //         { id: 2, name: 'Jane Smith', age: 34, city: 'San Francisco' },
-    //         { id: 3, name: 'Alice Johnson', age: 24, city: 'Los Angeles' },
-    //         { id: 4, name: 'Mike Brown', age: 45, city: 'Chicago' },
-    //         { id: 5, name: 'Sara Wilson', age: 30, city: 'Seattle' },
-    //     ],
-    //     []
-    // );
+    console.log("displayCartData", displayCartData);
+    const dispatch = useDispatch()
     const data = React.useMemo(() =>
         displayCartData.carts.map(item => ({
             id: item.id,
@@ -27,19 +16,17 @@ const Cart = () => {
             total: parseFloat(item.displayItem.price.replace('₱', '').replace(',', '')) * item.quantity,
             images: item.displayItem.images.main,
         })),
-        []
+        [displayCartData]
     );
-    console.log("data", data);
     const columns = React.useMemo(
         () => [
             {
                 Header: 'ITEM',
                 accessor: 'title',
-                cell: ({ cell }) => {
-                    console.log("cell.row.original.images", cell.row.original.images)
+                Cell: ({ cell }) => {
                     return (
-                        <div className="flex items-center">
-                            <img src={cell.row.original.images} alt={cell.value} className="w-6 h-6 mr-2" />
+                        <div className="flex items-center gap-2">
+                            <img src={cell.row.original.images} alt={cell.value} className="w-36 h-24 object-cover border-[7px] hover:border-2 hover:border-[#C8651B]" />
                             {cell.value}
                         </div>
                     );
@@ -57,6 +44,20 @@ const Cart = () => {
                 Header: 'TOTAL',
                 accessor: 'total',
             },
+            {
+                Header: '',
+                accessor: 'remove',
+                Cell: ({ cell }) => {
+                    return (
+                        <div>
+                            <button
+                                onClick={() => dispatch(removecart(cell.row.original.id))}
+                                className='bg-[#efefef] px-3 py-[4px] text-black underline rounded font-semibold hover:bg-[#380c0f] hover:text-white'>
+                                Remove</button>
+                        </div>
+                    );
+                }
+            },
         ],
         []
     );
@@ -67,21 +68,22 @@ const Cart = () => {
         rows,
         prepareRow,
     } = useTable({ columns, data });
+    console.log("rows,", rows);
     return (
-        <div className='container m-auto flex flex-col items-center justify-center my-32 font-[#423c3a]'>
+        <div className='container m-auto flex flex-col items-center justify-center my-32 text-[#423c3a]'>
 
             <div>
                 <h1 className='uppercase tracking-[2px] text-xl font-bold mb-8'>Your cart</h1>
             </div>
-            <div>
-                <table>
+            <div className='min-w-[1200px]'>
+                <table className='w-[100%]'>
                     <thead>
                         {headerGroups.map((headerGroup, index) => (
                             <tr {...headerGroup.getHeaderGroupProps()} key={index} >
                                 {headerGroup.headers.map(column => (
                                     <th
                                         {...column.getHeaderProps()}
-                                        className='text-xs'
+                                        className='text-xs text-left py-3 border-b-[1px] border-[#c2c2c2]'
                                     >
                                         {column.render('Header')}
                                     </th>
@@ -89,15 +91,16 @@ const Cart = () => {
                             </tr>
                         ))}
                     </thead>
-                    <tbody {...getTableBodyProps()} className='border-t-[1px] border-[#272525]'>
+                    <tbody {...getTableBodyProps()} className=''>
                         {rows.map((row, index) => {
+                            console.log("row", row);
                             prepareRow(row);
                             return (
                                 <tr {...row.getRowProps()} key={index}>
                                     {row.cells.map(cell => (
                                         <td
                                             {...cell.getCellProps()}
-                                            className='p-7'
+                                            className='py-[25px] font-Figtree font-medium border-b-[1px] border-[#c2c2c2]'
                                         >
                                             {cell.render('Cell')}
                                         </td>

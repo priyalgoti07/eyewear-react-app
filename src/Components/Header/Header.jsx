@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 
 const Header = () => {
     const carts = useSelector(state => state)
-    console.log("carts", carts.carts);
     return (
         <div>
             <header className='w-full  bg-[#ffc038] flex justify-between p-6'>

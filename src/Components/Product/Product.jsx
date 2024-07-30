@@ -21,7 +21,6 @@ const Product = () => {
     const [toggleImg, setToggleImg] = useState(displayItem.images?.main || '')
     const [isClicked, setIsClicked] = useState(false);
     const handleaddTocart = (e) => {
-        console.log("i am productsData", displayItem);
         e.preventDefault()
         setIsClicked(true)
         if (quantity) {
