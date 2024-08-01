@@ -1,30 +1,45 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTable } from 'react-table'
 import { removecart } from '../../cartData/cartSlice'
 
 const Cart = () => {
-    const [quntityCal, setQuntityCal] = useState(0)
     const displayCartData = useSelector(state => state)
-    console.log("displayCartData", displayCartData);
     const dispatch = useDispatch()
+    const [quantities, setQuantities] = useState({})
+    console.log("displayCartData", displayCartData.cart);
+
+
+    useEffect(() => {
+        const initialQuantities = {}
+        data.map((item) => {
+            initialQuantities[item.id] = item.quantity
+            return initialQuantities
+        })
+        setQuantities(initialQuantities)
+    }, [])
+
+    const handleQuantityChange = (id, incdec) => {
+        setQuantities(prev => {
+            const newQuantity = (prev[id] || 0) + incdec
+            if (newQuantity < 1) return prev
+            return { ...prev, [id]: newQuantity };
+        })
+    }
+
     const data = React.useMemo(() =>
-        displayCartData.carts.map(item => ({
-            id: item.id,
-            title: item.displayItem.title,
-            price: item.displayItem.price,
-            quantity: item.quantity,
-            total: parseFloat(item.displayItem.price.replace('₱', '').replace(',', '')) * item.quantity,
-            images: item.displayItem.images.main,
-        })),
-        [displayCartData]
+        displayCartData.carts.map(item => (
+            {
+                id: item.id,
+                title: item.displayItem.title,
+                price: item.displayItem.price,
+                quantity: item.quantity,
+                total: parseFloat(item.displayItem.price.replace('₱', '').replace(',', '')) * quantities[item.id] || item.quantity,
+                images: item.displayItem.images.main,
+            })),
+        [displayCartData, quantities]
     );
 
-    const handleCalculation = (row) => {
-        console.log("row========>", row.original.quantity);
-        setQuntityCal(quntityCal = quntityCal + 1)
-    }
-    console.log("setQuntityCal", quntityCal);
     const columns = React.useMemo(
         () => [
             {
@@ -48,10 +63,13 @@ const Cart = () => {
                 Header: 'QUANTITY',
                 accessor: 'quantity',
                 Cell: ({ cell, row }) => {
-                    console.log("cell", cell, row);
+                    const { id } = cell.row.original;
+                    const quantity = quantities[id] || cell.value;
                     return (
-                        <div>
-                            <button onClick={handleCalculation}>+</button>{cell.value}<button>-</button>
+                        <div className='border-[1px] border-gray-400 max-w-[55%] flex justify-center gap-5'>
+                            <button onClick={() => handleQuantityChange(id, -1)}>-</button>
+                            {quantity}
+                            <button onClick={() => handleQuantityChange(id, 1)}>+</button>
                         </div>
                     )
                 }
@@ -59,7 +77,6 @@ const Cart = () => {
             {
                 Header: 'TOTAL',
                 accessor: 'total',
-
             },
             {
                 Header: '',
@@ -76,7 +93,7 @@ const Cart = () => {
                 }
             },
         ],
-        []
+        [quantities]
     );
 
     const {
@@ -85,7 +102,6 @@ const Cart = () => {
         rows,
         prepareRow,
     } = useTable({ columns, data });
-    console.log("rows,", rows);
     return (
         <div className='container m-auto flex flex-col items-center justify-center my-32 text-[#423c3a]'>
 
@@ -110,7 +126,6 @@ const Cart = () => {
                     </thead>
                     <tbody {...getTableBodyProps()} className=''>
                         {rows.map((row, index) => {
-                            console.log("row", row);
                             prepareRow(row);
                             return (
                                 <tr {...row.getRowProps()} key={index}>
@@ -127,6 +142,9 @@ const Cart = () => {
                         })}
                     </tbody>
                 </table>
+                <div className='float-end'>
+                    SunTotal
+                </div>
             </div>
 
         </div>
