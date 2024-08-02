@@ -8,7 +8,7 @@ const Cart = () => {
     const displayCartData = useSelector(state => state)
     const dispatch = useDispatch()
     const [quantities, setQuantities] = useState({})
-    console.log("displayCartData", displayCartData.cart);
+    console.log("displayCartData", displayCartData.lastUpdatedCartItem);
 
 
     useEffect(() => {
@@ -125,10 +125,11 @@ const Cart = () => {
                     <thead>
                         {headerGroups.map((headerGroup, index) => (
                             <tr {...headerGroup.getHeaderGroupProps()} key={index} >
-                                {headerGroup.headers.map(column => (
+                                {headerGroup.headers.map((column, index) => (
                                     <th
                                         {...column.getHeaderProps()}
                                         className='text-xs text-left py-3 border-b-[1px] border-[#c2c2c2]'
+                                        key={index}
                                     >
                                         {column.render('Header')}
                                     </th>
@@ -141,10 +142,11 @@ const Cart = () => {
                             prepareRow(row);
                             return (
                                 <tr {...row.getRowProps()} key={index}>
-                                    {row.cells.map(cell => (
+                                    {row.cells.map((cell, index) => (
                                         <td
                                             {...cell.getCellProps()}
                                             className='py-[25px] font-Figtree font-medium border-b-[1px] border-[#c2c2c2]'
+                                            key={index}
                                         >
                                             {cell.render('Cell')}
                                         </td>

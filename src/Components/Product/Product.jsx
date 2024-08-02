@@ -74,13 +74,16 @@ const Product = () => {
                                     : 'bg-transparent text-[#C8651B] border-[#C8651B] hover:bg-[#C8651B] hover:text-white text-center'
                                     }`}>ADD TO CART
                             </button>
-                            <button
-                                onClick={(e) => e.preventDefault()}
-                                className='border-2 border-[#c7a374] p-3 rounded-3xl hover:bg-[#c7a374] hover:text-white  text-[#636363] text-[13px] text-center'>
-                                <Link to={'/cart'}>
-                                    BUY IT NOW
-                                </Link>
-                            </button>
+                            {isClicked &&
+                                <button
+                                    onClick={(e) => e.preventDefault()}
+                                    className='border-2 border-[#c7a374] p-3 rounded-3xl hover:bg-[#c7a374] hover:text-white  text-[#636363] text-[13px] text-center'>
+                                    <Link to={'/cart'}>
+                                        BUY IT NOW
+                                    </Link>
+                                </button>
+                            }
+
                         </form>
                     </div>
                 </div>
