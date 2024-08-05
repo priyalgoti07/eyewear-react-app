@@ -1,33 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTable } from 'react-table'
-import { removecart } from '../../cartData/cartSlice'
+import { removecart, updateQuntiy } from '../../cartData/cartSlice'
 import { Link } from 'react-router-dom'
 
 const Cart = () => {
     const displayCartData = useSelector(state => state)
     const dispatch = useDispatch()
-    const [quantities, setQuantities] = useState({})
-    console.log("displayCartData", displayCartData.lastUpdatedCartItem);
-
-
-    useEffect(() => {
-        const initialQuantities = {}
-        data.map((item) => {
-            initialQuantities[item.id] = item.quantity
-            return initialQuantities
-        })
-        setQuantities(initialQuantities)
-    }, [])
 
     const handleQuantityChange = (id, incdec) => {
-        setQuantities(prev => {
-            const newQuantity = (prev[id] || 0) + incdec
-            if (newQuantity < 1) return prev
-            return { ...prev, [id]: newQuantity };
-        })
+        dispatch(updateQuntiy({ id: id, incdec: incdec }))
     }
-
     const data = React.useMemo(() =>
         displayCartData.carts.map(item => (
             {
@@ -35,10 +18,10 @@ const Cart = () => {
                 title: item.displayItem.title,
                 price: item.displayItem.price,
                 quantity: item.quantity,
-                total: parseFloat(item.displayItem.price.replace('₱', '').replace(',', '')) * quantities[item.id] || item.quantity,
+                total: parseFloat(item.displayItem.price.replace('₱', '').replace(',', '')) * item.quantity,
                 images: item.displayItem.images.main,
             })),
-        [displayCartData, quantities]
+        [displayCartData]
     );
 
     const columns = React.useMemo(
@@ -65,11 +48,10 @@ const Cart = () => {
                 accessor: 'quantity',
                 Cell: ({ cell, row }) => {
                     const { id } = cell.row.original;
-                    const quantity = quantities[id] || cell.value;
                     return (
                         <div className='border-[1px] border-gray-400 max-w-[55%] flex justify-center gap-4'>
                             <button onClick={() => handleQuantityChange(id, -1)}>-</button>
-                            {quantity}
+                            {cell.value}
                             <button onClick={() => handleQuantityChange(id, 1)}>+</button>
                         </div>
                     )
@@ -100,7 +82,7 @@ const Cart = () => {
                 }
             },
         ],
-        [quantities]
+        []
     );
 
     const {

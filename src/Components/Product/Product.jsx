@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { allProductData } from '../../data/productData'
 import "./product.css"
-import { useDispatch } from 'react-redux'
+import React, { useState } from 'react'
 import { addCart } from '../../cartData/cartSlice'
+import { Link, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { allProductData } from '../../data/productData'
 
 const Product = () => {
     const dispatch = useDispatch()
-    const { catagory, id } = useParams()
+    const updateQuantity = useSelector(state => state.carts)
+    const { id } = useParams()
+
     const [productData] = useState([
         allProductData[11],
         allProductData[50],
@@ -16,16 +18,29 @@ const Product = () => {
         allProductData[23],
         allProductData[40],
     ])
-    const [quantity, setQuantity] = useState(1)
-    const displayItem = productData.find((item) => item.id === id)
-    const [toggleImg, setToggleImg] = useState(displayItem.images?.main || '')
+    const [error, setError] = useState(false);
+    const [quantity, setQuantity] = useState(1);
     const [isClicked, setIsClicked] = useState(false);
+    const displayItem = productData.find((item) => item.id === id);
+    const [toggleImg, setToggleImg] = useState(displayItem.images?.main || '');
+
+
     const handleaddTocart = (e) => {
+        const itemInCart = updateQuantity.find((qt) => qt.id === displayItem.id);
+
+        // Calculate the total quantity after adding the new quantity
+        const totalQuantity = itemInCart ? itemInCart.quantity : quantity;
+        console.log("totalQuantity", totalQuantity);
         e.preventDefault()
         setIsClicked(true)
-        if (quantity) {
+
+        if (totalQuantity < displayItem.quantity) {
             dispatch(addCart({ id: displayItem.id, displayItem, quantity }))
         }
+        else {
+            setError("We Do Not Have Enough Stocks For Your Current Order. Contact Us Directly To Get More Information")
+        }
+
     }
     return (
         <div className='container m-auto '>
@@ -83,7 +98,9 @@ const Product = () => {
                                     </Link>
                                 </button>
                             }
-
+                            {
+                                error && <h5 className='text-red-500'>{error}</h5>
+                            }
                         </form>
                     </div>
                 </div>
