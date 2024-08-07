@@ -53,7 +53,7 @@ const Cart = () => {
                     { console.log("cell", cell.value, row?.original?.originalQt, row?.original?.originalQt > cell.value); }
                     return (
                         <div className='border-[1px] border-gray-400 max-w-[55%] flex justify-center gap-4'>
-                            <button onClick={() => (row?.original?.originalQt > cell.value) && handleQuantityChange(id, -1)}>-</button>
+                            <button onClick={() => handleQuantityChange(id, -1)}>-</button>
                             {cell.value}
                             <button onClick={() => handleQuantityChange(id, 1)}>+</button>
                         </div>
