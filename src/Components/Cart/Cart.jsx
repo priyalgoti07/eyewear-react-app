@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Cart = () => {
     const displayCartData = useSelector(state => state)
     const dispatch = useDispatch()
-    console.log("displayCartData", displayCartData);
+    console.log("displayCartData", displayCartData.carts.length !== 0);
     const handleQuantityChange = (id, incdec) => {
         dispatch(updateQuntiy({ id: id, incdec: incdec }))
     }
@@ -100,60 +100,66 @@ const Cart = () => {
     const formattedSubtotal = subTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     return (
-        <div className='container m-auto flex flex-col items-center justify-center my-32 text-[#423c3a]'>
 
-            <div>
-                <h1 className='uppercase tracking-[2px] text-xl font-bold mb-8'>Your cart</h1>
-            </div>
-            <div className='min-w-[1200px]'>
-                <table className='w-[100%]'>
-                    <thead>
-                        {headerGroups.map((headerGroup, index) => (
-                            <tr {...headerGroup.getHeaderGroupProps()} key={index} >
-                                {headerGroup.headers.map((column, index) => (
-                                    <th
-                                        {...column.getHeaderProps()}
-                                        className='text-xs text-left py-3 border-b-[1px] border-[#c2c2c2]'
-                                        key={index}
-                                    >
-                                        {column.render('Header')}
-                                    </th>
-                                ))}
-                            </tr>
-                        ))}
-                    </thead>
-                    <tbody {...getTableBodyProps()} className=''>
-                        {rows.map((row, index) => {
-                            prepareRow(row);
-                            return (
-                                <tr {...row.getRowProps()} key={index}>
-                                    {row.cells.map((cell, index) => (
-                                        <td
-                                            {...cell.getCellProps()}
-                                            className='py-[25px] font-Figtree font-medium border-b-[1px] border-[#c2c2c2]'
+        (displayCartData.carts.length !== 0) ?
+            <div className='container m-auto flex flex-col items-center justify-center my-32 text-[#423c3a]'>
+
+                <div>
+                    <h1 className='uppercase tracking-[2px] text-xl font-bold mb-8'>Your cart</h1>
+                </div>
+                <div className='min-w-[1200px]'>
+                    <table className='w-[100%]'>
+                        <thead>
+                            {headerGroups.map((headerGroup, index) => (
+                                <tr {...headerGroup.getHeaderGroupProps()} key={index} >
+                                    {headerGroup.headers.map((column, index) => (
+                                        <th
+                                            {...column.getHeaderProps()}
+                                            className='text-xs text-left py-3 border-b-[1px] border-[#c2c2c2]'
                                             key={index}
                                         >
-                                            {cell.render('Cell')}
-                                        </td>
+                                            {column.render('Header')}
+                                        </th>
                                     ))}
                                 </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
-                <div className='float-end mt-14 flex flex-col justify-center items-end'>
-                    <div className='flex  items-start tracking-widest '>
-                        <span className='uppercase font-bold text-black  text-[11px]'>SubTotal</span>
-                        <span className='text-blac text-[28px] font-black'>{`₱${formattedSubtotal}`}</span>
+                            ))}
+                        </thead>
+                        <tbody {...getTableBodyProps()} className=''>
+                            {rows.map((row, index) => {
+                                prepareRow(row);
+                                return (
+                                    <tr {...row.getRowProps()} key={index}>
+                                        {row.cells.map((cell, index) => (
+                                            <td
+                                                {...cell.getCellProps()}
+                                                className='py-[25px] font-Figtree font-medium border-b-[1px] border-[#c2c2c2]'
+                                                key={index}
+                                            >
+                                                {cell.render('Cell')}
+                                            </td>
+                                        ))}
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                    <div className='float-end mt-14 flex flex-col justify-center items-end'>
+                        <div className='flex  items-start tracking-widest '>
+                            <span className='uppercase font-bold text-black  text-[11px]'>SubTotal</span>
+                            <span className='text-blac text-[28px] font-black'>{`₱${formattedSubtotal}`}</span>
+                        </div>
+                        <div className='text-[12px] mt-[10px] italic font-Montserrat pb-3 border-b-[1px] border-[#c2c2c2]'>Shipping and taxes computed at checkout</div>
+                        <div className='mt-10 bg-black text-white'><button className='py-4 px-10 uppercase font-semibold tracking-widest hover:bg-[#C8651B]'>Checkout</button></div>
+                        <Link className='mt-2 text-[#585858] tracking-wider underline cursor-pointer' to={"/"}>Keep Shopping</Link>
                     </div>
-                    <div className='text-[12px] mt-[10px] italic font-Montserrat pb-3 border-b-[1px] border-[#c2c2c2]'>Shipping and taxes computed at checkout</div>
-                    <div className='mt-10 bg-black text-white'><button className='py-4 px-10 uppercase font-semibold tracking-widest hover:bg-[#C8651B]'>Checkout</button></div>
-                    <Link className='mt-2 text-[#585858] tracking-wider underline cursor-pointer' to={"/"}>Keep Shopping</Link>
                 </div>
+
             </div>
-
-        </div>
-
+            :
+            <div className='h-[500px] container m-auto flex flex-col items-center justify-center my-32 text-[#423c3a]'>
+                <div className='uppercase tracking-[2px] text-xl font-bold mb-4'>Your cart is looking empty</div>
+                <Link className='text-[#585858] tracking-wider underline cursor-pointer uppercase underline-offset-[5px]' to={"/"}>Shopp Now</Link>
+            </div>
     )
 }
 
