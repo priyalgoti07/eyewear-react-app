@@ -7,16 +7,18 @@ import { Link } from 'react-router-dom'
 const Cart = () => {
     const displayCartData = useSelector(state => state)
     const dispatch = useDispatch()
-
+    console.log("displayCartData", displayCartData);
     const handleQuantityChange = (id, incdec) => {
         dispatch(updateQuntiy({ id: id, incdec: incdec }))
     }
     const data = React.useMemo(() =>
         displayCartData.carts.map(item => (
+            console.log("item", item),
             {
                 id: item.id,
                 title: item.displayItem.title,
                 price: item.displayItem.price,
+                originalQt: item.displayItem.quantity,
                 quantity: item.quantity,
                 total: parseFloat(item.displayItem.price.replace('₱', '').replace(',', '')) * item.quantity,
                 images: item.displayItem.images.main,
@@ -48,6 +50,7 @@ const Cart = () => {
                 accessor: 'quantity',
                 Cell: ({ cell, row }) => {
                     const { id } = cell.row.original;
+                    { console.log("cell", cell.value, row?.original?.originalQt, row?.original?.originalQt > cell.value); }
                     return (
                         <div className='border-[1px] border-gray-400 max-w-[55%] flex justify-center gap-4'>
                             <button onClick={() => handleQuantityChange(id, -1, "decrement")}>-</button>
