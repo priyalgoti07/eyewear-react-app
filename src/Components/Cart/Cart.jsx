@@ -7,13 +7,11 @@ import { Link } from 'react-router-dom'
 const Cart = () => {
     const displayCartData = useSelector(state => state)
     const dispatch = useDispatch()
-    console.log("displayCartData", displayCartData.carts.length !== 0);
-    const handleQuantityChange = (id, incdec) => {
+    const handleQuantityChange = (id, incdec, identy, cell) => {
         dispatch(updateQuntiy({ id: id, incdec: incdec }))
     }
     const data = React.useMemo(() =>
         displayCartData.carts.map(item => (
-            console.log("item", item),
             {
                 id: item.id,
                 title: item.displayItem.title,
@@ -50,12 +48,13 @@ const Cart = () => {
                 accessor: 'quantity',
                 Cell: ({ cell, row }) => {
                     const { id } = cell.row.original;
-                    { console.log("cell", cell.value, row?.original?.originalQt, row?.original?.originalQt > cell.value); }
+                    const canIncrement = displayCartData.lastUpdatedCartItem.quantity > cell.value
                     return (
-                        <div className='border-[1px] border-gray-400 max-w-[55%] flex justify-center gap-4'>
-                            <button onClick={() => handleQuantityChange(id, -1, "decrement")}>-</button>
+                        <div className='border-[1px] border-gray-400 max-w-[55%] flex justify-center gap-4 py-1 px-3'>
+                            <button onClick={() => (cell.value > 1) && handleQuantityChange(id, -1, "decrement", cell.value)}>-</button>
                             {cell.value}
-                            <button onClick={() => handleQuantityChange(id, 1, "increment")}>+</button>
+                            <button onClick={() => (displayCartData.lastUpdatedCartItem.quantity > cell.value) &&
+                                handleQuantityChange(id, 1, "increment", cell.value)}>+</button>
                         </div>
                     )
                 }

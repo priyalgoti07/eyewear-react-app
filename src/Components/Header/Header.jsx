@@ -26,14 +26,14 @@ const Header = () => {
                     </Link>
                 </div>
             </header>
-            <nav>
+            <nav style={{ position: "sticky", top: "0", zIndex: 50 }}>
                 <ul className='flex gap-10 justify-center bg-black text-[#f2f5ff] text-xs p-5'>
                     <Link to='/products'>
-                        <li>COLLECTION</li>
+                        <li className='hover:underline  hover:underline-offset-[4px]'>COLLECTION</li>
                     </Link>
-                    <li>EYEGLASSES</li>
-                    <li>SUNGLASSES</li>
-                    <li>ABOUT US</li>
+                    <li className='hover:underline  hover:underline-offset-[4px]'>EYEGLASSES</li>
+                    <li className='hover:underline  hover:underline-offset-[4px]'>SUNGLASSES</li>
+                    <li className='hover:underline  hover:underline-offset-[4px]'>ABOUT US</li>
                 </ul>
             </nav>
         </div>
