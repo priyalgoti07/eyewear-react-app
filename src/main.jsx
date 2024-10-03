@@ -10,12 +10,13 @@ import Product from './Components/Product/Product.jsx'
 import { Provider } from 'react-redux'
 import { persist, store } from './app/store.js'
 import { PersistGate } from 'redux-persist/integration/react'
+import ProductGallery from './Components/ProductGallery.jsx'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout />}>
     <Route path='' element={<Home />} />
     <Route path='/cart' element={<Cart />} />
-    <Route path='/products' element={<Cart />} />
+    <Route path='/products' element={<ProductGallery />} />
 
     <Route path='/products/:category/:id' element={<Product />} />
   </Route>
