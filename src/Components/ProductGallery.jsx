@@ -62,7 +62,7 @@ const ProductGallery = () => {
             <div className="flex flex-col md:flex-row justify-between items-center h-[420px] p-4 md:p-0">
                 <div className="w-full md:w-[30%] p-8 text-center text-[#423c3a]">
                     <h1 className="text-4xl font-bold uppercase tracking-wide mb-4">{categoryData.banner.title}</h1>
-                    <p className="text-sm font-medium tracking-wide">{categoryData.banner.description}</p>
+                    <p className="text-sm font-CourierPrime tracking-wide">{categoryData.banner.description}</p>
                 </div>
                 <div className="w-full md:w-[70%] h-full featured-img1">
                     <img
@@ -121,6 +121,7 @@ const ProductGallery = () => {
                                     <p className="text-gray-700 mb-2 font-bold">
                                         <div>{product.price}</div>
                                         <div className="line-through text-gray-500">{product.oldPrice}</div>
+                                        <div className="line-through text-gray-500 mr-2">{product.originalPrice}</div>
                                     </p>
                                 </div>
                             </div>
