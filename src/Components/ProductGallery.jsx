@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
-import { allProductsCategoryData } from '../data/productCategoryData';
+import React, { useEffect, useState } from 'react';
+import { allProductsCategoryData, eyeglassesCategoryData, sunglassesCategoryData } from '../data/productCategoryData';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import getCategory from '../utils/getCategory';
 
 const ProductGallery = () => {
+    const location = useLocation();
+    const { eyeglasses } = useParams();
     const [categoryData, setCategoryData] = useState(allProductsCategoryData);
-    const [filteredProducts, setFilteredProducts] = useState(categoryData.products); // To store filtered products
-    const [activeFilter, setActiveFilter] = useState('all'); // For tracking the active filter
-    const [selectedProduct, setSelectedProduct] = useState(null); // For tracking selected product (for the yellow border)
+    const [filteredProducts, setFilteredProducts] = useState(categoryData.products);
+    const [activeFilter, setActiveFilter] = useState('all');
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [hoveredProduct, setHoveredProduct] = useState(null);
 
     const handleFilter = (filterType) => {
         setActiveFilter(filterType); // Set the active filter button
-        if (filterType === 'all') {
+        if (filterType === "/products") {
             setFilteredProducts(categoryData.products); // Show all products
         } else {
             const filtered = categoryData.products.filter((item) => {
-                if (filterType === 'eyes') {
+                if (filterType === "/products/eyeglasses") {
                     return item.type === 'frames'; // Filter by eyeglasses (frames)
-                } else if (filterType === 'sun') {
+                } else if (filterType === '/products/sunglasses') {
                     return item.type === 'sunnies'; // Filter by sunglasses
                 }
                 return true; // Default to all products
@@ -23,22 +28,42 @@ const ProductGallery = () => {
             setFilteredProducts(filtered); // Update state with filtered products
         }
     };
+    // Update Category Banner and Data
+    useEffect(() => {
+        if (location.pathname === "/products/eyeglasses") {
+            setCategoryData(eyeglassesCategoryData);
+        } else if (location.pathname === "/products/sunglasses") {
+            setCategoryData(sunglassesCategoryData);
+        } else {
+            setCategoryData(allProductsCategoryData);
+        }
+    }, [location.pathname]);
 
-    const handleProductSelect = (productId) => {
-        setSelectedProduct(productId); // Set the selected product for the yellow border
-    };
-    console.log("filteredProducts",filteredProducts)
+    // Handle Product Filtering
+    useEffect(() => {
+        if (categoryData.products) {
+            handleFilter(location.pathname);
+        }
+    }, [categoryData, location.pathname]);
+
+    const handleProductSelect = (productId) => setSelectedProduct(productId);
+    const handleMouseEnter = (productId) => hoveredProduct !== productId && setHoveredProduct(productId);
+    const handleMouseLeave = () => setHoveredProduct(null);
+
+    const buttons = [
+        { path: '/products', label: 'All Products' },
+        { path: '/products/eyeglasses', label: 'Eyeglasses' },
+        { path: '/products/sunglasses', label: 'Sunglasses' },
+    ];
+
     return (
         <div className="w-full bg-gray-100">
-            {/* Banner section */}
+            {/* Banner Section */}
             <div className="flex flex-col md:flex-row justify-between items-center h-[420px] p-4 md:p-0">
-                {/* Text section */}
                 <div className="w-full md:w-[30%] p-8 text-center text-[#423c3a]">
                     <h1 className="text-4xl font-bold uppercase tracking-wide mb-4">{categoryData.banner.title}</h1>
                     <p className="text-sm font-medium tracking-wide">{categoryData.banner.description}</p>
                 </div>
-
-                {/* Image section */}
                 <div className="w-full md:w-[70%] h-full featured-img1">
                     <img
                         src={categoryData.banner.img}
@@ -48,27 +73,19 @@ const ProductGallery = () => {
                 </div>
             </div>
 
-            {/* Filter buttons */}
-            <div className="my-6 flex justify-center space-x-4">
-                <button
-                    onClick={() => handleFilter('all')}
-                    className={`px-4 py-2 border uppercase font-bold ${activeFilter === 'all' ? 'bg-yellow-500 text-white' : 'bg-white text-black'} transition-colors duration-300 hover:bg-yellow-400`}
-                >
-                    All Products
-                </button>
-                <button
-                    onClick={() => handleFilter('eyes')}
-                    className={`px-4 py-2 border uppercase font-bold ${activeFilter === 'eyes' ? 'bg-yellow-500 text-white' : 'bg-white text-black'} transition-colors duration-300 hover:bg-yellow-400`}
-                >
-                    Eyeglasses
-                </button>
-                <button
-                    onClick={() => handleFilter('sun')}
-                    className={`px-4 py-2 border uppercase font-bold ${activeFilter === 'sun' ? 'bg-yellow-500 text-white' : 'bg-white text-black'} transition-colors duration-300 hover:bg-yellow-400`}
-                >
-                    Sunglasses
-                </button>
-            </div>
+            {/* Filter Buttons */}
+            <div className="my-6 flex justify-center space-x-4">{
+                buttons.map(({ path, label }) => (
+                    <Link key={path} to={path}>
+                        <button
+                            onClick={() => handleFilter(path)}
+                            className={`px-4 py-2 border uppercase font-bold ${activeFilter === path ? 'bg-[#ffc038] text-white' : 'bg-white text-black'} transition-colors duration-300 hover:bg-yellow-400`}
+                        >
+                            {label}
+                        </button>
+                    </Link>
+                ))
+            }</div>
 
             {/* Sort Dropdown */}
             <div className="flex justify-end px-6 mb-4">
@@ -78,36 +95,36 @@ const ProductGallery = () => {
                     <option value="priceHigh">Sort By: Price (High to Low)</option>
                 </select>
             </div>
-
+            {console.log("filteredProducts",filteredProducts)}
+            
             {/* Product Grid */}
-            <div className="max-w-[1500px] mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 ">
-                    {filteredProducts.map((product) => (
-                        <div>
-                            <div
-                                key={product.id}
-                                onClick={() => handleProductSelect(product.id)}
-                                className={`p-4  hover:border-yellow-500 border-[5px] relative group`}
-                            // className={`p-4 border bg-white rounded shadow-md relative transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${selectedProduct === product.id ? 'border-4 border-yellow-500' : ''}`}
-                            >
-                                <img
-                                    src={product.images.main}
-                                    alt={product.title}
-                                    className="w-full h-60 object-cover mb-4 rounded"
-                                />
-                                <span className="absolute text-[14px] top-4 right-5 bg-gray-500 text-white  px-2 py-1 rounded transition-colors duration-300 group-hover:bg-[#380c0f]">
-                                    SALE
-                                </span>
+            <div className="max-w-[1400px] mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+                    {filteredProducts?.map((product) => (
+                        <Link to={`/products/${getCategory(product.type)}/${product.id}`}>
+                            <div key={product.id} className="w-[420px]">
+                                <div
+                                    onClick={() => handleProductSelect(product.id)}
+                                    onMouseEnter={() => handleMouseEnter(product.id)}
+                                    onMouseLeave={handleMouseLeave}
+                                    className={`p-4 border-[5px] relative group hover:border-[#ffc038] ${selectedProduct === product.id ? 'border-[#ffc038]' : ''}`}
+                                >
+                                    <img
+                                        src={hoveredProduct === product.id ? product.images.side : product.images.main}
+                                        alt={product.title}
+                                        className="w-full h-60 object-cover mb-4 rounded"
+                                    />
+                                    <span className="absolute text-[14px] top-4 right-5 bg-gray-500 text-white px-2 py-1 rounded transition-colors duration-300 group-hover:bg-[#380c0f]">SALE</span>
+                                </div>
+                                <div className="flex justify-center flex-col text-center">
+                                    <h2 className="text-lg font-semibold uppercase">{product.title}</h2>
+                                    <p className="text-gray-700 mb-2 font-bold">
+                                        <div>{product.price}</div>
+                                        <div className="line-through text-gray-500">{product.oldPrice}</div>
+                                    </p>
+                                </div>
                             </div>
-                            <div className='flex justify-center flex-col text-center'>
-                                <h2 className="text-lg font-semibold">{product.title}</h2>
-                                <p className="text-gray-700 mb-2 ">
-                                    <div className="line-through text-gray-500 mr-2">{product.originalPrice}</div>
-                                    <div className="text-red-500">{product.price}</div>
-                                </p>
-                            </div>
-                        </div>
-
+                        </Link>
 
                     ))}
                 </div>

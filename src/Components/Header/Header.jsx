@@ -31,8 +31,12 @@ const Header = () => {
                     <Link to='/products'>
                         <li className='hover:underline  hover:underline-offset-[4px]'>COLLECTION</li>
                     </Link>
-                    <li className='hover:underline  hover:underline-offset-[4px]'>EYEGLASSES</li>
-                    <li className='hover:underline  hover:underline-offset-[4px]'>SUNGLASSES</li>
+                    <Link to='/products/eyeglasses'>
+                        <li className='hover:underline  hover:underline-offset-[4px]'>EYEGLASSES</li>
+                    </Link>
+                    <Link to='/products/sunglasses'>
+                        <li className='hover:underline  hover:underline-offset-[4px]'>SUNGLASSES</li>
+                    </Link>
                     <li className='hover:underline  hover:underline-offset-[4px]'>ABOUT US</li>
                 </ul>
             </nav>
