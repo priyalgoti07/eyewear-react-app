@@ -5,12 +5,12 @@ import getCategory from '../utils/getCategory';
 
 const ProductGallery = () => {
     const location = useLocation();
-    const { eyeglasses } = useParams();
     const [categoryData, setCategoryData] = useState(allProductsCategoryData);
     const [filteredProducts, setFilteredProducts] = useState(categoryData.products);
     const [activeFilter, setActiveFilter] = useState('all');
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [hoveredProduct, setHoveredProduct] = useState(null);
+    const [sorting, setSorting] = useState('recommended')
 
     const handleFilter = (filterType) => {
         setActiveFilter(filterType); // Set the active filter button
@@ -56,6 +56,31 @@ const ProductGallery = () => {
         { path: '/products/sunglasses', label: 'Sunglasses' },
     ];
 
+    const handleSorting = (e) => {
+        const selectedValue = e.target.value;
+        setSorting(selectedValue); // Update the state when an option is selected
+
+        // If "recommended" is selected, reset to the original products
+        if (selectedValue === "recommended") {
+            setFilteredProducts(categoryData.products); // Reset to original order
+            return;
+        }
+
+        // For other options, sort the products by price
+        const sortedProducts = categoryData.products.slice().sort((a, b) => {
+            const priceA = parseFloat(a.price.replace(/[₱,]/g, ''));
+            const priceB = parseFloat(b.price.replace(/[₱,]/g, ''));
+
+            if (selectedValue === "priceHigh") {
+                return priceB - priceA; // High to low
+            } else if (selectedValue === "priceLow") {
+                return priceA - priceB; // Low to high
+            }
+            return 0;
+        });
+
+        setFilteredProducts(sortedProducts); // Set the sorted products
+    };
     return (
         <div className="w-full bg-gray-100">
             {/* Banner Section */}
@@ -89,14 +114,12 @@ const ProductGallery = () => {
 
             {/* Sort Dropdown */}
             <div className="flex justify-end px-6 mb-4">
-                <select className="border p-2">
+                <select className="border-2 rounded-sm p-2" onChange={handleSorting} value={sorting} style={{ borderColor: '#ffc038' }}>
                     <option value="recommended">Sort By: Recommended</option>
                     <option value="priceLow">Sort By: Price (Low to High)</option>
                     <option value="priceHigh">Sort By: Price (High to Low)</option>
                 </select>
             </div>
-            {console.log("filteredProducts",filteredProducts)}
-            
             {/* Product Grid */}
             <div className="max-w-[1400px] mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
