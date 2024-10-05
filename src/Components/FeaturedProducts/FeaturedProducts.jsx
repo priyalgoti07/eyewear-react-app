@@ -53,7 +53,7 @@ const FeaturedProducts = () => {
       <h3 className='tracking-widest font-bold text-2xl text-center'>NEW ARRIVALS</h3>
       <Slider {...productSettings}>
         {featured.map((item, index) => (
-          <Link to={`/products/${getCategory(item.type)}/${item.id}`}>
+          <Link to={`/products/${getCategory(item.type)}/${item.id}`} key={item.id}>
             <div key={index} >
               <div className='m-5 text-center '>
                 <ProgressiveImage src={item.images.main} placeholder={item.compressedImages.main}>

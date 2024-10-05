@@ -10,27 +10,17 @@ const Product = () => {
     const updateQuantity = useSelector(state => state.carts)
     const { id } = useParams()
 
-    const [productData] = useState([
-        allProductData[11],
-        allProductData[50],
-        allProductData[75],
-        allProductData[54],
-        allProductData[23],
-        allProductData[40],
-    ])
     const [error, setError] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const [isClicked, setIsClicked] = useState(false);
-    const displayItem = productData.find((item) => item.id === id);
+    const displayItem = allProductData.find((item) => item.id === id);
     const [toggleImg, setToggleImg] = useState(displayItem.images?.main || '');
-
 
     const handleaddTocart = (e) => {
         const itemInCart = updateQuantity.find((qt) => qt.id === displayItem.id);
 
         // Calculate the total quantity after adding the new quantity
         const totalQuantity = itemInCart ? itemInCart.quantity : quantity;
-        console.log("totalQuantity", totalQuantity);
         e.preventDefault()
         setIsClicked(true)
 
@@ -77,6 +67,9 @@ const Product = () => {
                             ))}
                         </ul>
                     </div>
+                    {displayItem.color &&
+                        <div className='mt-8 text-[#423c3a]'><span className="uppercase">Color :</span> {displayItem.color}</div>
+                    }
                     <div>
                         <form className='flex flex-col gap-7' >
                             <div >

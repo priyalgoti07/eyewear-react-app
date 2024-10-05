@@ -16,8 +16,15 @@ const persistedReducer = persistReducer(persistconfig, todoReducer)
 
 // Configure your Redux store using the persisted reducer
 export const store = configureStore({
-    reducer: persistedReducer
-})
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+          ignoredPaths: ['register'],
+        },
+      }),
+  });
 
 
 export const persist = persistStore(store)
