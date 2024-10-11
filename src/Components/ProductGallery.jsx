@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { allProductsCategoryData, eyeglassesCategoryData, sunglassesCategoryData } from '../data/productCategoryData';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import getCategory from '../utils/getCategory';
 
 const ProductGallery = () => {
@@ -10,25 +10,30 @@ const ProductGallery = () => {
     const [activeFilter, setActiveFilter] = useState('all');
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [hoveredProduct, setHoveredProduct] = useState(null);
-    const [sorting, setSorting] = useState('recommended')
+    const [sorting, setSorting] = useState('recommended');
+    const [currentPage, setCurrentPage] = useState(1); // Current page state
+    const [itemsPerPage] = useState(9); // Items per page
 
+    // Handle filtering products
     const handleFilter = (filterType) => {
-        setActiveFilter(filterType); // Set the active filter button
+        setActiveFilter(filterType);
         if (filterType === "/products") {
-            setFilteredProducts(categoryData.products); // Show all products
+            setFilteredProducts(categoryData.products);
         } else {
             const filtered = categoryData.products.filter((item) => {
                 if (filterType === "/products/eyeglasses") {
-                    return item.type === 'frames'; // Filter by eyeglasses (frames)
+                    return item.type === 'frames';
                 } else if (filterType === '/products/sunglasses') {
-                    return item.type === 'sunnies'; // Filter by sunglasses
+                    return item.type === 'sunnies';
                 }
-                return true; // Default to all products
+                return true;
             });
-            setFilteredProducts(filtered); // Update state with filtered products
+            setFilteredProducts(filtered);
         }
+        setCurrentPage(1); // Reset to page 1 on filter change
     };
-    // Update Category Banner and Data
+
+    // Update category data based on location
     useEffect(() => {
         if (location.pathname === "/products/eyeglasses") {
             setCategoryData(eyeglassesCategoryData);
@@ -39,7 +44,7 @@ const ProductGallery = () => {
         }
     }, [location.pathname]);
 
-    // Handle Product Filtering
+    // Filter products when category changes
     useEffect(() => {
         if (categoryData.products) {
             handleFilter(location.pathname);
@@ -50,37 +55,41 @@ const ProductGallery = () => {
     const handleMouseEnter = (productId) => hoveredProduct !== productId && setHoveredProduct(productId);
     const handleMouseLeave = () => setHoveredProduct(null);
 
-    const buttons = [
-        { path: '/products', label: 'All Products' },
-        { path: '/products/eyeglasses', label: 'Eyeglasses' },
-        { path: '/products/sunglasses', label: 'Sunglasses' },
-    ];
-
+    // Handle sorting
     const handleSorting = (e) => {
         const selectedValue = e.target.value;
-        setSorting(selectedValue); // Update the state when an option is selected
+        setSorting(selectedValue);
 
-        // If "recommended" is selected, reset to the original products
         if (selectedValue === "recommended") {
-            setFilteredProducts(categoryData.products); // Reset to original order
-            return;
+            setFilteredProducts(categoryData.products);
+            // return;
         }
 
-        // For other options, sort the products by price
         const sortedProducts = categoryData.products.slice().sort((a, b) => {
             const priceA = parseFloat(a.price.replace(/[₱,]/g, ''));
             const priceB = parseFloat(b.price.replace(/[₱,]/g, ''));
 
             if (selectedValue === "priceHigh") {
-                return priceB - priceA; // High to low
+                return priceB - priceA;
             } else if (selectedValue === "priceLow") {
-                return priceA - priceB; // Low to high
+                return priceA - priceB;
             }
             return 0;
         });
 
-        setFilteredProducts(sortedProducts); // Set the sorted products
+        setFilteredProducts(sortedProducts);
+        setCurrentPage(1); // Reset to page 1 on filter change
     };
+    // Pagination logic
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+    console.log("currentPage----->", currentPage, totalPages)
     return (
         <div className="w-full bg-gray-100">
             {/* Banner Section */}
@@ -99,18 +108,18 @@ const ProductGallery = () => {
             </div>
 
             {/* Filter Buttons */}
-            <div className="my-6 flex justify-center space-x-4">{
-                buttons.map(({ path, label }) => (
+            <div className="my-6 flex justify-center space-x-4">
+                {['/products', '/products/eyeglasses', '/products/sunglasses'].map((path, index) => (
                     <Link key={path} to={path}>
                         <button
                             onClick={() => handleFilter(path)}
                             className={`px-4 py-2 border uppercase font-bold ${activeFilter === path ? 'bg-[#ffc038] text-white' : 'bg-white text-black'} transition-colors duration-300 hover:bg-yellow-400`}
                         >
-                            {label}
+                            {['All Products', 'Eyeglasses', 'Sunglasses'][index]}
                         </button>
                     </Link>
-                ))
-            }</div>
+                ))}
+            </div>
 
             {/* Sort Dropdown */}
             <div className="flex justify-end px-6 mb-4">
@@ -120,12 +129,13 @@ const ProductGallery = () => {
                     <option value="priceHigh">Sort By: Price (High to Low)</option>
                 </select>
             </div>
+
             {/* Product Grid */}
             <div className="max-w-[1400px] mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-                    {filteredProducts?.map((product) => (
-                        <Link to={`/products/${getCategory(product.type)}/${product.id}`}>
-                            <div key={product.id} className="w-[420px]">
+                    {currentItems.map((product) => (
+                        <Link to={`/products/${getCategory(product.type)}/${product.id}`} key={product.id}>
+                            <div className="w-[420px]">
                                 <div
                                     onClick={() => handleProductSelect(product.id)}
                                     onMouseEnter={() => handleMouseEnter(product.id)}
@@ -149,9 +159,41 @@ const ProductGallery = () => {
                                 </div>
                             </div>
                         </Link>
-
                     ))}
                 </div>
+            </div>
+
+            {/* Pagination Controls */}
+            <div className="flex justify-center mt-6">
+                {currentPage > 1 &&
+                    <button
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="px-4 py-2 mx-2 border bg-white"
+                    >
+                        Previous
+                    </button>
+                }
+
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => handlePageChange(index + 1)}
+                        className={`px-4 py-2 mx-1 border ${currentPage === index + 1 ? 'bg-[#ffc038] text-white' : 'bg-white text-black'}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+                {currentPage < totalPages &&
+                    <button
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                        className="px-4 py-2 mx-2 border bg-white"
+                    >
+                        Next
+                    </button>
+                }
+
             </div>
         </div>
     );
