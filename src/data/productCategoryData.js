@@ -9,7 +9,7 @@ import imgCompressedEyeglasses from '../assets/img/unsplash-compressed/frame-7.j
 import { allProductData, sunglassesData, eyeglassesData } from './productData';
 
 export const allProductsCategoryData = {
-  documentTitle: 'COLLECTION | Shop all products - SAVANT Eyewear Store',
+  documentTitle: 'COLLECTION | Shop all products - NATRAM Eyewear Store',
   banner: {
     title: 'All Products',
     description:
@@ -22,7 +22,7 @@ export const allProductsCategoryData = {
 };
 
 export const eyeglassesCategoryData = {
-  documentTitle: 'OPTICAL | Trendy Frames & Styles - SAVANT Eyewear Store',
+  documentTitle: 'OPTICAL | Trendy Frames & Styles - NATRAM Eyewear Store',
   banner: {
     title: 'Optical Shop',
     description:
@@ -35,7 +35,7 @@ export const eyeglassesCategoryData = {
 };
 
 export const sunglassesCategoryData = {
-  documentTitle: 'SUNGLASSES | Trendy Frames & Styles - SAVANT Eyewear Store',
+  documentTitle: 'SUNGLASSES | Trendy Frames & Styles - NATRAM Eyewear Store',
   banner: {
     title: 'Sunnies Store',
     description:
