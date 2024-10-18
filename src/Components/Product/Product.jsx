@@ -1,5 +1,5 @@
 import "./product.css"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { addCart } from '../../cartData/cartSlice'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,6 +15,14 @@ const Product = () => {
     const [isClicked, setIsClicked] = useState(false);
     const displayItem = allProductData.find((item) => item.id === id);
     const [toggleImg, setToggleImg] = useState(displayItem.images?.main || '');
+    console.log("toggleImg", toggleImg, displayItem.images.main)
+
+    // Update toggleImg when displayItem changes
+    useEffect(() => {
+        if (displayItem) {
+            setToggleImg(displayItem.images?.main || '');
+        }
+    }, [displayItem]);
 
     const handleaddTocart = (e) => {
         const itemInCart = updateQuantity.find((qt) => qt.id === displayItem.id);
