@@ -8,10 +8,10 @@ export default {
     extend: {
       fontFamily: {
         'Playfair-Display': ["Playfair Display", "sans-serif"],
-        'Raleway': ["Raleway", "sans-serif"],
+        'Raleway': ["Raleway", "sans-serif", "Arial", "Helvetica", "monospace"],
         'Montserrat': ["Montserrat", "sans-serif"],
         'Figtree': ["Figtree", "sans-serif"],
-        'CourierPrime':["Courier Prime", "sans-serif"]
+        'CourierPrime': ["Courier Prime", "sans-serif"]
       }
     },
   },
