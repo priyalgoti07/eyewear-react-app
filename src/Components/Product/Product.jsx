@@ -113,15 +113,15 @@ const Product = () => {
                 <ul className="flex items-center justify-center gap-8 mt-10">
                     <li className="w-[370px]">
                         <span className="text-2xl">1</span>
-                        <p className="font-Raleway tracking-[.9px] text-[14px] leading-6">Purchase the frame (Optical or Sunglasses) you wish to have a prescription. Skip this step if you wish to add a prescription to a frame you already have.</p>
+                        <p className="font-Raleway tracking-[.9px] text-[14px] leading-6 font-medium">Purchase the frame (Optical or Sunglasses) you wish to have a prescription. Skip this step if you wish to add a prescription to a frame you already have.</p>
                     </li>
                     <li className="w-[370px]">
                         <span className="text-2xl">2</span>
-                        <p className="font-Raleway tracking-[.9px] text-[14px] leading-6">Schedule an appointment through our website or contact us through our telephone number. A SAVANT Eyewear representative will reach out to confirm your appointment.</p>
+                        <p className="font-Raleway tracking-[.9px] text-[14px] leading-6 font-medium">Schedule an appointment through our website or contact us through our telephone number. A SAVANT Eyewear representative will reach out to confirm your appointment.</p>
                     </li>
                     <li className="w-[370px]">
                         <span className="text-2xl">3</span>
-                        <p className="font-Raleway tracking-[.9px] text-[14px] leading-6" >Attend your scheduled appointment and have your order for prescription lenses finalized. Once finalized, your frame will be delivered to your address.</p>
+                        <p className="font-Raleway tracking-[.9px] text-[14px] leading-6 font-medium" >Attend your scheduled appointment and have your order for prescription lenses finalized. Once finalized, your frame will be delivered to your address.</p>
                     </li>
                 </ul>
             </div>

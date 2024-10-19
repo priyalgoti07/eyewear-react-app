@@ -14,6 +14,27 @@ const Header = () => {
     const [isDraWerOpen, setIsDraWerOpen] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const [filterProducts, setFilterProducts] = useState([]);
+    const [
+        isFixed, setIsFixed] = useState(false); // Track if the second header is fixed
+
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // Detect when the user has scrolled past the first header
+            const scrollPosition = window.scrollY;
+            if (scrollPosition > 150) {
+                // Adjust this value based on the height of the first header
+                setIsFixed(true);
+            } else {
+                setIsFixed(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     useEffect(() => {
         const timeOutId = setTimeout(() => {
@@ -48,9 +69,9 @@ const Header = () => {
 
     return (
         <div>
-            <header className='w-full  bg-[#ffc038] flex justify-between p-6'>
-                <p className=''></p>
+            <header className='w-full  bg-[#ffc038] p-6 flex justify-between'>
                 {/* Free shipping on orders above 10000 */}
+                <p className='text-transparent'>Priyal</p>
                 <Link to='/'>
                     <div className='hover: cursor-pointer text-center'>
                         <h1 className='text-5xl font-extrabold tracking-widest'>NETRAM</h1>
@@ -66,7 +87,11 @@ const Header = () => {
                     </Link>
                 </div>
             </header>
-            <nav style={{ position: "sticky", top: "0", zIndex: 50 }}>
+            {/* <nav className='fixed top-0 left-0 w-full z-50 bg-black'> */}
+            <nav
+                className={`w-full bg-black z-50 ${isFixed ? 'fixed top-0 left-0 py-2' : 'relative'}`}
+                style={{ transition: 'all 0.3s ease-in-out' }} // Optional: Smooth transition
+            >
                 <ul className='flex gap-10 justify-center bg-black text-[#f2f5ff] text-xs p-5'>
                     <Link to='/products'>
                         <li className='hover:underline  hover:underline-offset-[4px]'>COLLECTION</li>
@@ -79,6 +104,7 @@ const Header = () => {
                     </Link>
                     <li className='hover:underline  hover:underline-offset-[4px]'>ABOUT US</li>
                 </ul>
+                
             </nav>
             <Drawer anchor='right'
                 open={isDraWerOpen}

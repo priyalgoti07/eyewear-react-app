@@ -164,7 +164,7 @@ const ProductGallery = () => {
             </div>
 
             {/* Pagination Controls */}
-            <div className="flex justify-center mt-6">
+            <div className="flex justify-center py-4">
                 {currentPage > 1 &&
                     <button
                         onClick={() => handlePageChange(currentPage - 1)}
