@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Search from '../../assets/SVG/search.svg'
 import Bag from '../../assets/SVG/bag.svg'
+import BagWhite from '../../assets/SVG/bagwhite.svg'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Drawer, IconButton } from '@mui/material'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import CloseIcon from '@mui/icons-material/Close';
 import { allProductData } from '../../data/productData'
 import getCategory from '../../utils/getCategory'
+import searchWhite from '../../assets/SVG/searchwhite.svg'
 
 const Header = () => {
     const carts = useSelector(state => state);
@@ -71,7 +72,7 @@ const Header = () => {
         <div>
             <header className='w-full  bg-[#ffc038] p-6 flex justify-between'>
                 {/* Free shipping on orders above 10000 */}
-                <p className='text-transparent'>Priyal</p>
+                <p className='text-transparent'>Free shipping</p>
                 <Link to='/'>
                     <div className='hover: cursor-pointer text-center'>
                         <h1 className='text-5xl font-extrabold tracking-widest'>NETRAM</h1>
@@ -89,10 +90,17 @@ const Header = () => {
             </header>
             {/* <nav className='fixed top-0 left-0 w-full z-50 bg-black'> */}
             <nav
-                className={`w-full bg-black z-50 ${isFixed ? 'fixed top-0 left-0 py-2' : 'relative'}`}
+                className={`w-full bg-black  justify-between z-50 ${isFixed ? 'fixed top-0 left-0 py-4 px-6 flex' : 'relative'}`}
                 style={{ transition: 'all 0.3s ease-in-out' }} // Optional: Smooth transition
             >
-                <ul className='flex gap-10 justify-center bg-black text-[#f2f5ff] text-xs p-5'>
+                {isFixed && <Link to='/'>
+                    <div className='hover: cursor-pointer text-center text-white'>
+                        <h1 className='text-2xl font-bold tracking-widest'>NETRAM</h1>
+                        <h3 className='text-[10px] tracking-[0.9em] '>EYEWEAR</h3>
+                    </div>
+                </Link>}
+
+                <ul className={`flex gap-10 justify-center bg-black text-[#f2f5ff] text-xs p-5 ${!isFixed && 'justify-center'}`}>
                     <Link to='/products'>
                         <li className='hover:underline  hover:underline-offset-[4px]'>COLLECTION</li>
                     </Link>
@@ -104,7 +112,18 @@ const Header = () => {
                     </Link>
                     <li className='hover:underline  hover:underline-offset-[4px]'>ABOUT US</li>
                 </ul>
-                
+                {
+                    (isFixed) &&
+                    <div className='flex gap-5 items-center'>
+                        <div><img src={searchWhite} alt='Search' onClick={() => setIsDraWerOpen(!isDraWerOpen)} /></div>
+                        <Link to='/cart'>
+                            <div className='relative'><img src={BagWhite} alt='Bag' className='' />
+                                <span className='absolute top-5 left-3 w-5 h-5 bg-white text-black text-center rounded-full text-sm border-2 border-white flex justify-center items-center'>{carts.carts.length}</span></div>
+                        </Link>
+                    </div>
+
+                }
+
             </nav>
             <Drawer anchor='right'
                 open={isDraWerOpen}
