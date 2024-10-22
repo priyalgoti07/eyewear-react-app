@@ -110,7 +110,9 @@ const Header = () => {
                     <Link to='/products/sunglasses'>
                         <li className='hover:underline  hover:underline-offset-[4px]'>SUNGLASSES</li>
                     </Link>
-                    <li className='hover:underline  hover:underline-offset-[4px]'>ABOUT US</li>
+                    <Link to='/about'>
+                        <li className='hover:underline  hover:underline-offset-[4px]'>ABOUT US</li>
+                    </Link>
                 </ul>
                 {
                     (isFixed) &&

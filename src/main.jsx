@@ -11,6 +11,7 @@ import { Provider } from 'react-redux'
 import { persist, store } from './app/store.js'
 import { PersistGate } from 'redux-persist/integration/react'
 import ProductGallery from './Components/ProductGallery.jsx'
+import About from './Components/About/index.jsx'
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout />}>
@@ -20,6 +21,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/products/eyeglasses' element={<ProductGallery />} />
     <Route path='/products/sunglasses' element={<ProductGallery />} />
     <Route path='/products/:category/:id' element={<Product />} />
+    <Route path='/about' element={<About />} />
   </Route>
 ))
 ReactDOM.createRoot(document.getElementById('root')).render(
