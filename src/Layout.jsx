@@ -10,10 +10,10 @@ const Layout = () => {
         // Set document title based on the current route
         switch (location.pathname) {
             case '/':
-                document.title = 'Home - My App';
+                document.title = 'NATRAM Experience | NATRAM Eyewear OnlineStore';
                 break;
             case '/cart':
-                document.title = 'Cart - My App';
+                document.title = 'Your Shopping Cart | NATRAM';
                 break;
             case '/products':
                 document.title = 'Products - My App';
@@ -31,7 +31,7 @@ const Layout = () => {
                 if (location.pathname.startsWith('/products/')) {
                     document.title = 'Product Details - My App';
                 } else {
-                    document.title = 'My App';
+                    document.title = 'The NATRAM Experience | NATRAM Eyewear OnlineStore';
                 }
         }
     }, [location]);
