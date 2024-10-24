@@ -6,7 +6,6 @@ import Footer from './Components/Footer/Footer'
 const Layout = () => {
     console.log("Layout")
     const location = useLocation();
-
     useEffect(() => {
         // Set document title based on the current route
         switch (location.pathname) {
@@ -24,6 +23,9 @@ const Layout = () => {
                 break;
             case '/products/sunglasses':
                 document.title = 'Sunglasses - My App';
+                break;
+            case '/about':
+                document.title = 'The NATRAM Experience | NATRAM Eyewear OnlineStore';
                 break;
             default:
                 if (location.pathname.startsWith('/products/')) {
