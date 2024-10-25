@@ -1,5 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import first from '../../assets/img/first.png';
+import second from '../../assets/img/second.png';
+import third from '../../assets/img/third.png';
+import aboutstory from '../../assets/img/aboutstory-1.webp';
+import aboutstory2 from '../../assets/img/aboutstory2.webp';
+import aboutstory3 from '../../assets/img/aboutstory3.webp';
+import story from '../../assets/img/store-7.webp';
 
 const About = () => {
   return (
@@ -15,7 +22,7 @@ const About = () => {
       <div className='my-10'>
         <section className='text-center flex justify-center'>
           <div style={{ margin: '30px' }} className='about-img1'>
-            <img src='../../../src/assets/img/first.png' className='w-[550px] brightness-105 contrast-[105%]  outline outline-2' />
+            <img src={first} className='w-[550px] brightness-105 contrast-[105%]  outline outline-2' />
           </div>
           <div className='flex flex-col justify-end gap-9 m-6 text-start mb-9'>
             <h2 className='mb-8 tracking-[1px] text-3xl font-black'>About <span className='capitalize'>Us</span></h2>
@@ -44,12 +51,12 @@ const About = () => {
             </div>
           </div>
           <div style={{ margin: '30px' }} className='about-img1'>
-            <img src='../../../src/assets/img/second.png' className='w-[550px] brightness-105 contrast-[105%]  outline outline-2' />
+            <img src={second} className='w-[550px] brightness-105 contrast-[105%]  outline outline-2' />
           </div>
         </section>
         <section className='text-center flex justify-center'>
           <div style={{ margin: '30px' }} className='about-img1'>
-            <img src='../../../src/assets/img/third.png' className='w-[550px] brightness-105 contrast-[105%]  outline outline-2' />
+            <img src={third} className='w-[550px] brightness-105 contrast-[105%]  outline outline-2' />
           </div>
           <div className='flex flex-col justify-end gap-9 m-6 text-start mb-9'>
             <h2 className='mb-8 tracking-[1px] text-3xl font-black'>Responsible Shade</h2>
@@ -75,7 +82,7 @@ const About = () => {
           <Link to='/products' className='underline underline-offset-4'>Browse Products</Link>
         </div>
         <div className='w-[50%]'>
-          <img src='../../../src/assets/img/store-7.webp' className='max-h-[500px] w-[100%] object-cover' />
+          <img src={story} className='max-h-[500px] w-[100%] object-cover' />
         </div>
       </section>
 
@@ -83,7 +90,7 @@ const About = () => {
         <h3 className='my-10 uppercase tracking-widest text-xl font-black'>A community built on neighborhood values</h3>
         <div className='flex mb-32'>
           <div className='max-w-[33rem] flex flex-col gap-5 mx-10 text-left'>
-            <img src='../../../src/assets/img/aboutstory-1.webp' className='max-w-[450px] h-[32rem] object-cover' />
+            <img src={aboutstory} className='max-w-[450px] h-[32rem] object-cover' />
             <div className='max-w-[450px] flex flex-col gap-2'>
               <span className='text-xs tracking-widest text-[#423c3ab7] font-semibold uppercase'>locations</span>
               <h4 className='font-Playfair-Display font-light text-xl'>We're coming to Singapore</h4>
@@ -93,7 +100,7 @@ const About = () => {
             </div>
           </div>
           <div className='max-w-[33%] flex flex-col gap-5 mx-10 text-left'>
-            <img src='../../../src/assets/img/aboutstory2.webp' className='max-w-[450px] h-[32rem] object-cover' />
+            <img src={aboutstory2} className='max-w-[450px] h-[32rem] object-cover' />
             <div className='max-w-[450px] flex flex-col gap-2'>
               <span className='text-xs tracking-widest text-[#423c3ab7] font-semibold uppercase'>community</span>
               <h4 className='font-Playfair-Display font-light text-xl'>Meet our Netram Family</h4>
@@ -103,7 +110,7 @@ const About = () => {
             </div>
           </div>
           <div className='max-w-[33%] flex flex-col gap-5 mx-10 text-left'>
-            <img src='../../../src/assets/img/aboutstory3.webp' className='max-w-[450px] h-[32rem] object-cover' />
+            <img src={aboutstory3} className='max-w-[450px] h-[32rem] object-cover' />
             <div className='max-w-[450px] flex flex-col gap-2'>
               <span className='text-xs tracking-widest text-[#423c3ab7] font-semibold uppercase'>#NETRAMmoments</span>
               <h4 className='font-Playfair-Display font-light text-xl'>Eye Spy</h4>

@@ -1,4 +1,8 @@
 import React from 'react'
+import GitIcon from '../../../src/assets/img/github-icon.png';
+import Telephone from '../../../src/assets/img/icon-phone-9153a34f.avif';
+import Doenload from '../../../src/assets/img/download.webp';
+import chartUs from '../../../src/assets/img/chartUs.webp'
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -48,15 +52,15 @@ const Footer = () => {
                         <p className='mb-3'>Whether you're a collector or visiting for the first time, we're here to assist!</p>
                         <ul className='flex gap-[25px]'>
                             <li className='flex flex-col items-center gap-3'>
-                                <img src='../../../src/assets/img/icon-phone-9153a34f.avif' className='w-[30px]' />
+                                <img src={Telephone} className='w-[30px]' />
                                 <span className='text-[12px] font-bold tracking-wider'>(000)-NETRAM</span>
                             </li>
                             <li className='flex flex-col items-center gap-3'>
-                                <img src='../../../src/assets/img/download.webp' className='w-[30px]' />
+                                <img src={Doenload} className='w-[30px]' />
                                 <span className='text-[12px] font-bold tracking-widest'>support@netram.xyz</span>
                             </li>
                             <li className='flex flex-col items-center gap-3'>
-                                <img src='../../../src/assets/img/chartUs.webp' className='w-[30px]' />
+                                <img src={chartUs} className='w-[30px]' />
                                 <span className='text-[12px] font-bold tracking-wider'>Chat with Us</span>
                             </li>
                         </ul>
@@ -76,7 +80,7 @@ const Footer = () => {
 
             <div className='bg-black flex justify-center py-4 text-[#f2f5ff] flex-col items-center'>
                 <a href='https://github.com/priyalgoti07' className='flex gap-2' target='_blank'>
-                    <img src='../../../src/assets/img/github-icon.png' width={18} />
+                    <img src={GitIcon} width={18} />
                     <p className='text-[12px] '>Developed by Priyal Goti</p>
                 </a>
                 <small className='text-[10px] tracking-[1px]'>© Copyright {currentYear} Priyal Goti. All rights reserved.</small>
