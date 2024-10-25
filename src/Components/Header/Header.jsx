@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import Search from '../../assets/SVG/search.svg'
-import Bag from '../../assets/SVG/bag.svg'
-import BagWhite from '../../assets/SVG/bagwhite.svg'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Drawer, IconButton } from '@mui/material'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { allProductData } from '../../data/productData'
+import Bag from '../../assets/SVG/bag.svg'
+import Search from '../../assets/SVG/search.svg'
 import getCategory from '../../utils/getCategory'
+import { Drawer, IconButton } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import BagWhite from '../../assets/SVG/bagwhite.svg'
+import { allProductData } from '../../data/productData'
 import searchWhite from '../../assets/SVG/searchwhite.svg'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const Header = () => {
     const carts = useSelector(state => state);
-    const [isDraWerOpen, setIsDraWerOpen] = useState(false);
+    const [isFixed, setIsFixed] = useState(false); // Track if the second header is fixed
     const [inputValue, setInputValue] = useState('');
+    const [isDraWerOpen, setIsDraWerOpen] = useState(false);
     const [filterProducts, setFilterProducts] = useState([]);
-    const [
-        isFixed, setIsFixed] = useState(false); // Track if the second header is fixed
-
 
     useEffect(() => {
         const handleScroll = () => {
@@ -56,6 +54,7 @@ const Header = () => {
         setIsDraWerOpen(open);
         clearInput()
     };
+
     const clearInput = () => {
         setInputValue('')
         setFilterProducts([])
@@ -88,6 +87,7 @@ const Header = () => {
                     </Link>
                 </div>
             </header>
+
             {/* <nav className='fixed top-0 left-0 w-full z-50 bg-black'> */}
             <nav
                 className={`w-full bg-black  justify-between z-50 ${isFixed ? 'fixed top-0 left-0 py-4 px-6 flex' : 'relative'}`}
@@ -127,6 +127,7 @@ const Header = () => {
                 }
 
             </nav>
+
             <Drawer anchor='right'
                 open={isDraWerOpen}
                 onClose={toggleDrawer(false)}

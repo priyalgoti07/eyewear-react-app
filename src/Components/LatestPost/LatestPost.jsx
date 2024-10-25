@@ -18,6 +18,7 @@ const LatestPost = () => {
             <a className='text-[#423c3a] text-[12px]  font-bold underline underline-offset-4'>READ MORE</a>
           </div>
         </div>
+
         <div className='max-w-[33%] flex flex-col gap-5 mx-10'>
           <img src={bolg2} className='max-w-[450px] h-[32rem] object-cover' />
           <div className='max-w-[450px] flex flex-col gap-2'>
@@ -28,6 +29,7 @@ const LatestPost = () => {
             <a className='text-[#423c3a] text-[12px]  font-bold underline underline-offset-4'>READ MORE</a>
           </div>
         </div>
+
         <div className='max-w-[33%] flex flex-col gap-5 mx-10'>
           <img src={bolg3} className='max-w-[450px] h-[32rem] object-cover' />
           <div className='max-w-[450px] flex flex-col gap-2'>

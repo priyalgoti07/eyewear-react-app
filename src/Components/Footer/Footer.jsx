@@ -14,6 +14,7 @@ const Footer = () => {
                     </form>
                 </div>
             </section>
+
             <div className='w-[100%] bg-[#FFC038]'>
                 <div className='w-[1500px] m-auto flex py-14'>
                     <section className='flex gap-40 w-[50%] px-10 border-r border-black'>
@@ -72,6 +73,7 @@ const Footer = () => {
                     </ul>
                 </div>
             </div>
+
             <div className='bg-black flex justify-center py-4 text-[#f2f5ff] flex-col items-center'>
                 <a href='https://github.com/priyalgoti07' className='flex gap-2' target='_blank'>
                     <img src='../../../src/assets/img/github-icon.png' width={18} />

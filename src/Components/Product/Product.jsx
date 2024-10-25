@@ -6,16 +6,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { allProductData } from '../../data/productData'
 
 const Product = () => {
-    const dispatch = useDispatch()
-    const updateQuantity = useSelector(state => state.carts)
     const { id } = useParams()
-
+    const dispatch = useDispatch()
     const [error, setError] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const [isClicked, setIsClicked] = useState(false);
+    const updateQuantity = useSelector(state => state.carts);
     const displayItem = allProductData.find((item) => item.id === id);
     const [toggleImg, setToggleImg] = useState(displayItem.images?.main || '');
-    console.log("toggleImg", toggleImg, displayItem.images.main)
 
     // Update toggleImg when displayItem changes
     useEffect(() => {
@@ -40,6 +38,7 @@ const Product = () => {
         }
 
     }
+
     return (
         <>
             <div className='container m-auto'>
@@ -117,7 +116,7 @@ const Product = () => {
                     </li>
                     <li className="w-[370px]">
                         <span className="text-2xl">2</span>
-                        <p className="font-Raleway tracking-[.9px] text-[14px] leading-6 font-medium">Schedule an appointment through our website or contact us through our telephone number. A SAVANT Eyewear representative will reach out to confirm your appointment.</p>
+                        <p className="font-Raleway tracking-[.9px] text-[14px] leading-6 font-medium">Schedule an appointment through our website or contact us through our telephone number. A NATRAM Eyewear representative will reach out to confirm your appointment.</p>
                     </li>
                     <li className="w-[370px]">
                         <span className="text-2xl">3</span>

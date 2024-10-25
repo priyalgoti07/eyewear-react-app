@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { allProductsCategoryData, eyeglassesCategoryData, sunglassesCategoryData } from '../data/productCategoryData';
-import { Link, useLocation } from 'react-router-dom';
 import getCategory from '../utils/getCategory';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { allProductsCategoryData, eyeglassesCategoryData, sunglassesCategoryData } from '../data/productCategoryData';
 
 const ProductGallery = () => {
     const location = useLocation();
+    const [itemsPerPage] = useState(9); // Items per page
+    const [currentPage, setCurrentPage] = useState(1); // Current page state
+    const [sorting, setSorting] = useState('recommended');
+    const [activeFilter, setActiveFilter] = useState('all');
+    const [hoveredProduct, setHoveredProduct] = useState(null);
+    const [selectedProduct, setSelectedProduct] = useState(null);
     const [categoryData, setCategoryData] = useState(allProductsCategoryData);
     const [filteredProducts, setFilteredProducts] = useState(categoryData.products);
-    const [activeFilter, setActiveFilter] = useState('all');
-    const [selectedProduct, setSelectedProduct] = useState(null);
-    const [hoveredProduct, setHoveredProduct] = useState(null);
-    const [sorting, setSorting] = useState('recommended');
-    const [currentPage, setCurrentPage] = useState(1); // Current page state
-    const [itemsPerPage] = useState(9); // Items per page
 
     // Handle filtering products
     const handleFilter = (filterType) => {
@@ -89,7 +89,7 @@ const ProductGallery = () => {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-    console.log("currentPage----->", currentPage, totalPages)
+
     return (
         <div className="w-full bg-gray-100">
             {/* Banner Section */}

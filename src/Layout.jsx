@@ -4,7 +4,6 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Footer from './Components/Footer/Footer'
 
 const Layout = () => {
-    console.log("Layout")
     const location = useLocation();
     useEffect(() => {
         // Set document title based on the current route

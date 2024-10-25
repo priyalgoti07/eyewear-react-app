@@ -1,8 +1,8 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useTable } from 'react-table'
-import { removecart, updateQuntiy } from '../../cartData/cartSlice'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { removecart, updateQuntiy } from '../../cartData/cartSlice'
 
 const Cart = () => {
     const displayCartData = useSelector(state => state)

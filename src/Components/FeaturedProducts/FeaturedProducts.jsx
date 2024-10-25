@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
-import { allProductData } from '../../data/productData'
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import ProgressiveImage from 'react-progressive-graceful-image';
 import "./featuredProducts.css"
-import left from "../../assets/SVG/arrows/left-arrow-svgrepo-com.svg"
-import right from "../../assets/SVG/arrows/right-arrow-svgrepo-com.svg"
+import Slider from 'react-slick';
+import React, { useState } from 'react'
+import "slick-carousel/slick/slick.css";
 import { Link } from 'react-router-dom';
+import "slick-carousel/slick/slick-theme.css";
 import getCategory from '../../utils/getCategory';
-
-
+import { allProductData } from '../../data/productData';
+import ProgressiveImage from 'react-progressive-graceful-image';
+import left from "../../assets/SVG/arrows/left-arrow-svgrepo-com.svg";
+import right from "../../assets/SVG/arrows/right-arrow-svgrepo-com.svg";
 
 const FeaturedProducts = () => {
 
@@ -22,6 +20,7 @@ const FeaturedProducts = () => {
       </div>
     );
   };
+
   const PrevArrow = (props) => {
     const { onClick } = props;
     return (
@@ -30,6 +29,7 @@ const FeaturedProducts = () => {
       </div>
     );
   };
+
   const [featured] = useState([
     allProductData[11],
     allProductData[50],
@@ -48,6 +48,7 @@ const FeaturedProducts = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   }
+
   return (
     <section className='container m-auto container-products'>
       <h3 className='tracking-widest font-bold text-2xl text-center'>NEW ARRIVALS</h3>
