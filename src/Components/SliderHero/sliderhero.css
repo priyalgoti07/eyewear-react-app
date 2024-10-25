@@ -161,3 +161,37 @@
   font-size: 14px;
   font-weight: 700;
 }
+
+.about-img1 {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  /* max-width: 100%; */
+}
+
+.about-img1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black with 50% opacity */
+  z-index: 1;
+  /* Ensure the black shade is above the image */
+  /* transition: background-color 0.3s ease-in-out; */
+  transition: background-color 0.1s,  1.5s ease-in-out;
+}
+
+.about-img1 img {
+  object-fit: cover;
+  transition: transform 0.5s, filter 1.5s ease-in-out;
+  display: block;
+}
+
+.about-img1:hover::before {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.025);
+  /* Lighten the black shade on hover */
+}

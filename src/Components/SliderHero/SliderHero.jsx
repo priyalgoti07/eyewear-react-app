@@ -160,12 +160,12 @@ const SliderHero = () => {
                             The collection features a range of frames in various colors and styles, all made from high-quality materials that are built to last.</p>
                         <Link className='text-[#423c3a] tracking-widest text-sm font-semibold underline underline-offset-[5px]' to='#'>BROWSE AMORA</Link>
                     </div>
-                    <div className='featured-img1'>
+                    <div className='about-img1'>
                         <img src={featured1} className='brightness-110 saturate-[80%] contrast-100' />
                     </div>
                 </div>
                 <div className='featured-coll__col-2 flex flex-col justify-center gap-7'>
-                    <div className='featured-img1'>
+                    <div className='about-img1'>
                         <img src={featured2} className='brightness-105 contrast-[105%]  outline outline-2' />
                     </div>
                     <a className='shope-collection'>SEE THE COLLECTION</a>

@@ -12,10 +12,10 @@ const About = () => {
           Elevate your eyewear game with SAVANT frames.</p>
       </section>
       <section className='text-center flex justify-center'>
-        <div style={{ margin: '30px' }} className='featured-img1'>
+        <div style={{ margin: '30px' }} className='about-img1'>
           <img src='../../../src/assets/img/first.png' className='w-[550px] brightness-105 contrast-[105%]  outline outline-2' />
         </div>
-        <div className='flex flex-col justify-end gap-9 m-6 text-start'>
+        <div className='flex flex-col justify-end gap-9 m-6 text-start mb-9'>
           <h2 className='mb-8 tracking-[1px] text-3xl font-black'>About <span className='capitalize'>Us</span></h2>
           <p className='w-[360px] font-Raleway leading-6 text-[15px] font-medium'>SAVANT was born of a simple mission - to create high-quality, stylish glasses that would empower
             people to express themselves with confidence.</p>
@@ -24,7 +24,42 @@ const About = () => {
           <p className='w-[360px] leading-6 text-[15px] font-Raleway font-medium'>Today, we continue to build on that legacy by designing unique and trendsetting glasses that reflect the
             spirit and creativity of our brand. Join us as we continue to redefine eyewear fashion and bring our vision to life.</p>
           <div>
-            <Link to='/products' className='bg-[#272525] px-4 py-3 hover:underline rounded font-semibold hover:bg-[#380c0f] text-white'>Browse Products</Link>
+            <Link to='/products' className='bg-[#272525] px-7 py-[13px] hover:underline rounded font-semibold hover:bg-[#380c0f] text-white'>Browse Products</Link>
+          </div>
+        </div>
+      </section>
+      <section className='text-center flex justify-center'>
+
+        <div className='flex flex-col justify-end gap-9 m-6 text-start mb-9'>
+          <h2 className='mb-8 tracking-[1px] text-3xl font-black'>Eyewear For Everyone</h2>
+          <p className='w-[360px] font-Raleway leading-6 text-[15px] font-medium'>At SAVANT, we believe that everyone should have access to stylish and affordable glasses.
+            That's why we strive to create frames that are not only trendy and fashionable, but also accessible for everyone.</p>
+          <p className='w-[360px] leading-6 text-[15px] font-Raleway font-medium'>From classic to contemporary, our frames are designed to suit every taste and style, making
+            it easy for our customers to find the perfect pair of glasses.</p>
+          <p className='w-[360px] leading-6 text-[15px] font-Raleway font-medium'>Our commitment to accessibility is at the heart of everything we do, and we take pride in
+            helping people around the world to see better and look their best.</p>
+          <div>
+            <Link to='/products' className='bg-[#272525] px-7 py-[13px] hover:underline rounded font-semibold hover:bg-[#380c0f] text-white'>Browse Frames</Link>
+          </div>
+        </div>
+        <div style={{ margin: '30px' }} className='about-img1'>
+          <img src='../../../src/assets/img/second.png' className='w-[550px] brightness-105 contrast-[105%]  outline outline-2' />
+        </div>
+      </section>
+      <section className='text-center flex justify-center'>
+        <div style={{ margin: '30px' }} className='about-img1'>
+          <img src='../../../src/assets/img/third.png' className='w-[550px] brightness-105 contrast-[105%]  outline outline-2' />
+        </div>
+        <div className='flex flex-col justify-end gap-9 m-6 text-start mb-9'>
+          <h2 className='mb-8 tracking-[1px] text-3xl font-black'>Responsible Shade</h2>
+          <p className='w-[360px] font-Raleway leading-6 text-[15px] font-medium'>We are committed to making a positive impact on the world around us. We believe that as a
+            business, we have a responsibility to give back to the communities we serve and to protect the planet we all call home.</p>
+          <p className='w-[360px] leading-6 text-[15px] font-Raleway font-medium'>From using sustainable materials and manufacturing practices to supporting local charities
+            and non-profits, we are constantly striving to make a difference.</p>
+          <p className='w-[360px] leading-6 text-[15px] font-Raleway font-medium'>When you choose our brand, you are not just getting a pair of stylish and functional glasses
+            - you are also joining us in our commitment to making a positive impact on the world.</p>
+          <div>
+            <Link to='/products' className='bg-[#272525] px-7 py-[13px] hover:underline rounded font-semibold hover:bg-[#380c0f] text-white'>Browse Sunnies</Link>
           </div>
         </div>
       </section>
