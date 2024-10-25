@@ -9,10 +9,10 @@ const Layout = () => {
         // Set document title based on the current route
         switch (location.pathname) {
             case '/':
-                document.title = 'NATRAM Experience | NATRAM Eyewear OnlineStore';
+                document.title = 'NETRAM Experience | NETRAM Eyewear OnlineStore';
                 break;
             case '/cart':
-                document.title = 'Your Shopping Cart | NATRAM';
+                document.title = 'Your Shopping Cart | NETRAM';
                 break;
             case '/products':
                 document.title = 'Products - My App';
@@ -24,13 +24,13 @@ const Layout = () => {
                 document.title = 'Sunglasses - My App';
                 break;
             case '/about':
-                document.title = 'The NATRAM Experience | NATRAM Eyewear OnlineStore';
+                document.title = 'The NETRAM Experience | NETRAM Eyewear OnlineStore';
                 break;
             default:
                 if (location.pathname.startsWith('/products/')) {
                     document.title = 'Product Details - My App';
                 } else {
-                    document.title = 'The NATRAM Experience | NATRAM Eyewear OnlineStore';
+                    document.title = 'The NETRAM Experience | NETRAM Eyewear OnlineStore';
                 }
         }
     }, [location]);

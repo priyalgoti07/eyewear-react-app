@@ -9,7 +9,7 @@ const About = () => {
         <p className='max-w-[600px] text-sm font-Raleway tracking-[.5px] leading-6 font-medium'>Our designs are carefully crafted to capture the latest fashion trends while ensuring maximum comfort and functionality.
           With a range of unique styles and color options, we are confident that our collection has something to suit every taste and personality.</p>
         <p className='max-w-[600px] text-sm font-Raleway tracking-[.5px] leading-6 font-medium'>Our frames are crafted with attention to detail, utilizing the latest materials and technology to ensure the highest quality products.
-          Elevate your eyewear game with NATRAM frames.</p>
+          Elevate your eyewear game with NETRAM frames.</p>
       </section>
 
       <div className='my-10'>
@@ -19,7 +19,7 @@ const About = () => {
           </div>
           <div className='flex flex-col justify-end gap-9 m-6 text-start mb-9'>
             <h2 className='mb-8 tracking-[1px] text-3xl font-black'>About <span className='capitalize'>Us</span></h2>
-            <p className='w-[360px] font-Raleway leading-6 text-[15px] font-medium'>NATRAM was born of a simple mission - to create high-quality, stylish glasses that would empower
+            <p className='w-[360px] font-Raleway leading-6 text-[15px] font-medium'>NETRAM was born of a simple mission - to create high-quality, stylish glasses that would empower
               people to express themselves with confidence.</p>
             <p className='w-[360px] leading-6 text-[15px] font-Raleway font-medium'>Founded by a group of passionate designers and eyewear enthusiasts, we started our journey with a
               commitment to crafting frames that would stand the test of time, both in terms of durability and style.</p>
@@ -33,7 +33,7 @@ const About = () => {
         <section className='text-center flex justify-center'>
           <div className='flex flex-col justify-end gap-9 m-6 text-start mb-9'>
             <h2 className='mb-8 tracking-[1px] text-3xl font-black'>Eyewear For Everyone</h2>
-            <p className='w-[360px] font-Raleway leading-6 text-[15px] font-medium'>At NATRAM, we believe that everyone should have access to stylish and affordable glasses.
+            <p className='w-[360px] font-Raleway leading-6 text-[15px] font-medium'>At NETRAM, we believe that everyone should have access to stylish and affordable glasses.
               That's why we strive to create frames that are not only trendy and fashionable, but also accessible for everyone.</p>
             <p className='w-[360px] leading-6 text-[15px] font-Raleway font-medium'>From classic to contemporary, our frames are designed to suit every taste and style, making
               it easy for our customers to find the perfect pair of glasses.</p>
@@ -96,7 +96,7 @@ const About = () => {
             <img src='../../../src/assets/img/aboutstory2.webp' className='max-w-[450px] h-[32rem] object-cover' />
             <div className='max-w-[450px] flex flex-col gap-2'>
               <span className='text-xs tracking-widest text-[#423c3ab7] font-semibold uppercase'>community</span>
-              <h4 className='font-Playfair-Display font-light text-xl'>Meet our Natram Family</h4>
+              <h4 className='font-Playfair-Display font-light text-xl'>Meet our Netram Family</h4>
               <p className='font-medium font-Raleway text-[#423c3a]'>At our brand, we place a great emphasis on the value of community
                 and family. From our dedicated team members to our loyal customers, we see everyone as a part of the larger family that makes our brand what it is today.</p>
               <a className='text-[#423c3a] text-[12px]  font-bold underline underline-offset-4'>READ MORE</a>
@@ -105,7 +105,7 @@ const About = () => {
           <div className='max-w-[33%] flex flex-col gap-5 mx-10 text-left'>
             <img src='../../../src/assets/img/aboutstory3.webp' className='max-w-[450px] h-[32rem] object-cover' />
             <div className='max-w-[450px] flex flex-col gap-2'>
-              <span className='text-xs tracking-widest text-[#423c3ab7] font-semibold uppercase'>#NATRAMmoments</span>
+              <span className='text-xs tracking-widest text-[#423c3ab7] font-semibold uppercase'>#NETRAMmoments</span>
               <h4 className='font-Playfair-Display font-light text-xl'>Eye Spy</h4>
               <p className='font-medium font-Raleway text-[#423c3a]'>Our brand has been spotted on some of the biggest
                 names in Hollywood! From red carpet events to casual outings, these stars have been rocking our frames and proving that our designs are truly timeless.</p>

@@ -6,7 +6,7 @@ const Footer = () => {
         <div className='text-[#423C3A]'>
             <section className='bg-black py-10 px-4'>
                 <div className=' max-w-[1200px] text-white flex justify-between m-auto items-center'>
-                    <h3 className='mx-5 text-2xl uppercase font-bold w-[20%]'>Be a part of the Natrams</h3>
+                    <h3 className='mx-5 text-2xl uppercase font-bold w-[20%]'>Be a part of the Netrams</h3>
                     <span className='font-CourierPrime leading-5 w-[25%] text-sm'>Enjoy 10% off your first purchase when you sign up!</span>
                     <form onSubmit={(e) => e.preventDefault()}>
                         <input type='email' name='email' className='bg-black border-[1px] border-yellow-400 p-4 flex-grow placeholder-yellow-500  focus:outline-none  focus:border-white' placeholder='Enter your email here' />
@@ -44,16 +44,16 @@ const Footer = () => {
                         </ul>
                     </section>
                     <section className='flex justify-center flex-col items-center px-10 w-[50%]'>
-                        <h1 className='uppercase tracking-[3px] mb-3 font-black'>Ask a Natram Specialist</h1>
+                        <h1 className='uppercase tracking-[3px] mb-3 font-black'>Ask a Netram Specialist</h1>
                         <p className='mb-3'>Whether you're a collector or visiting for the first time, we're here to assist!</p>
                         <ul className='flex gap-[25px]'>
                             <li className='flex flex-col items-center gap-3'>
                                 <img src='../../../src/assets/img/icon-phone-9153a34f.avif' className='w-[30px]' />
-                                <span className='text-[12px] font-bold tracking-wider'>(000)-NATRAM</span>
+                                <span className='text-[12px] font-bold tracking-wider'>(000)-NETRAM</span>
                             </li>
                             <li className='flex flex-col items-center gap-3'>
                                 <img src='../../../src/assets/img/download.webp' className='w-[30px]' />
-                                <span className='text-[12px] font-bold tracking-widest'>support@natram.xyz</span>
+                                <span className='text-[12px] font-bold tracking-widest'>support@netram.xyz</span>
                             </li>
                             <li className='flex flex-col items-center gap-3'>
                                 <img src='../../../src/assets/img/chartUs.webp' className='w-[30px]' />
@@ -64,7 +64,7 @@ const Footer = () => {
                 </div>
                 <div className='w-[1500px] m-auto flex justify-center text-[12px] font-bold py-7'>
                     <ul className='flex gap-7'>
-                        <span>© 2023 NATRAM</span>
+                        <span>© 2023 NETRAM</span>
                         <a href='/' className='underline font-CourierPrime'>Privacy</a>
                         <a href='/' className='underline font-CourierPrime'>Accessibility</a>
                         <a href='/' className='underline font-CourierPrime'>Terms of Service</a>

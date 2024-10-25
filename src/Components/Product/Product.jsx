@@ -116,7 +116,7 @@ const Product = () => {
                     </li>
                     <li className="w-[370px]">
                         <span className="text-2xl">2</span>
-                        <p className="font-Raleway tracking-[.9px] text-[14px] leading-6 font-medium">Schedule an appointment through our website or contact us through our telephone number. A NATRAM Eyewear representative will reach out to confirm your appointment.</p>
+                        <p className="font-Raleway tracking-[.9px] text-[14px] leading-6 font-medium">Schedule an appointment through our website or contact us through our telephone number. A NETRAM Eyewear representative will reach out to confirm your appointment.</p>
                     </li>
                     <li className="w-[370px]">
                         <span className="text-2xl">3</span>
