@@ -6,7 +6,7 @@
 
 NETRAM Eyewear is a mock-up of an e-commerce website that sells eyewear products. The website offers a range of eyewear products, including prescription glasses and trendy sunglasses & frames. This project was created as a practice on using React Router.
 
-# Features
+## Features
 
 1.Cart: The website has a cart feature where users can add items and then edit out their desired quantities on checkout. The cart is updated instantly and is passed down through a Cart Redux saga.
 
@@ -16,7 +16,7 @@ NETRAM Eyewear is a mock-up of an e-commerce website that sells eyewear products
 
 4.Product Sorter: The website also features a product sorter, allowing users to sort the eyewear products based on a range of criteria. Users can sort by price, popularity, and alphabetically, making it easy to find the best products for their needs.
 
-# Built With
+## Built With
 
 - Vite + React
 - React Router
@@ -28,7 +28,7 @@ NETRAM Eyewear is a mock-up of an e-commerce website that sells eyewear products
 - tailwindcss
 - HTML5
 
-# Getting Started
+## Getting Started
 
 In order to setup and work on this project on your own, you will need to:
 
@@ -40,10 +40,26 @@ In order to setup and work on this project on your own, you will need to:
 
    npm install
 
-3.A live demo of the project can be started by using:
+3. A live demo of the project can be started by using:
 
-    npm run dev
+   npm run dev
 
-4.Distribution files can be produced using:
+4. Distribution files can be produced using:
 
-    npm run build
+   npm run build
+
+## Display
+
+![Leanding Page](<Screenshot from 2024-10-28 12-48-22.png>)
+
+Home Page - Hero Section
+
+![Product Page](<src/assets/Screenshot from 2024-10-28 12-49-13.png>)
+
+Product Display Page - Gallery Section
+
+![About Page](<src/assets/Screenshot from 2024-10-28 12-49-56.png>)
+
+About Us Page
+
+## Developed by Priyal Goti
