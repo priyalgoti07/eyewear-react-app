@@ -58,11 +58,11 @@ Home Page - Hero Section
 
 Product Display Page - Gallery Section
 
-![Cart Page](<src/assets/Screenshot from 2024-10-28 12-49-56.png>)
+![Cart Page](<src/assets/Screenshot from 2025-03-17 09-22-59.png>)
 
 Cart Page
 
-![About Page](<src/assets/Screenshot from 2025-03-17 09-22-59.png>)
+![About Page](<src/assets/Screenshot from 2024-10-28 12-49-56.png>)
 
 About Us Page
 
